@@ -26,12 +26,13 @@ function getTitle(content) {
 }
 
 function testFetchURLs() {
-   fetchURLs(['http://google.co.za', 'http://bing.com'], function(err, results) {
+   var urls = ['http://google.co.za', 'http://bing.com'];
+   fetchURLs(urls, function(err, results) {
       if (err) {
          throw new Error(err);
       } else {
-         results.forEach(function(content) {
-            console.info('title', getTitle(content));
+         results.forEach(function(content, index) {
+            console.info('title', urls[index], getTitle(content));
          });
          assert.equal(getTitle(results[0]), 'Google');
          assert.equal(getTitle(results[1]), 'Bing');
