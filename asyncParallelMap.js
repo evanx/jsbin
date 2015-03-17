@@ -21,23 +21,20 @@ function fetchURLs(urls, then) {
    }).value(), then);
 }
 
-function getTitle(content) {
-  return content.match(/<title>(.*)<\/title>.*/)[1];   
-}
-
 function testFetchURLs() {
    var urls = ['http://google.co.za', 'http://bing.com'];
    fetchURLs(urls, function(err, results) {
       if (err) {
          throw new Error(err);
       } else {
-         results.forEach(function(content, index) {
-            console.info('title', urls[index], getTitle(content));
+         var titles = lodash.map(results, function(content) {
+            return content.match(/<title>(.*)<\/title>.*/)[1];   
          });
-         assert.equal(getTitle(results[0]), 'Google');
-         assert.equal(getTitle(results[1]), 'Bing');
+         console.info('titles', titles);
+         assert.equal(titles[0], 'Google');
+         assert.equal(titles[1], 'Bing');
       }
    });
 }
 
-testFetchURLs();
+testFetchURLs(); // output: titles [ 'Google', 'Bing' ]
