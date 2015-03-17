@@ -21,12 +21,17 @@ function fetchURLs(urls, then) {
    }).value(), then);
 }
 
+function getTitle(content) {
+   return content.match(/<title>(.*)<\/title>.*/)[1];   
+}
+
 function testFetchURLs() {
-   fetchURLs(['http://google.co.za'], function(err, results) {
+   fetchURLs(['http://google.co.za', 'http://bing.com'], function(err, results) {
       if (err) {
          throw new Error(err);
       } else {
-         assert.equal(results[0].match(/<title>(.*)<\/title>.*/)[1], 'Goggles');
+         assert.equal(getTitle(results[0]), 'Google');
+         assert.equal(getTitle(results[1]), 'Bing');
       }
    });
 }
