@@ -1,5 +1,4 @@
 
-
 ## async map recipe
 
 When you have an `array` of items which you want to "map" to tasks, to run in parallel, and finally process the results when all tasks are complete:
@@ -66,8 +65,9 @@ This might be wrapped in a function as follows:
 
 ```javascript
 var async = require('async');
-    lodash = require('lodash');
-    request = require('request');
+var lodash = require('lodash');
+var request = require('request');
+var assert = require('assert');
 
 function fetchURLs(urls, then) {
    async.parallel(lodash(urls).map(function(url) {
@@ -95,11 +95,12 @@ function testFetchURLs() {
       if (err) {
          throw new Error(err);
       } else {
-         results.forEach(function(content, index) {
-            console.info('title', urls[index], getTitle(content));
+         var titles = lodash.map(results, function(content) {
+            return content.match(/<title>(.*)<\/title>.*/)[1];   
          });
-         assert.equal(getTitle(results[0]), 'Google');
-         assert.equal(getTitle(results[1]), 'Bing');
+         console.info('titles', titles);
+         assert.equal(titles[0], 'Google');
+         assert.equal(titles[1], 'Bing');
       }
    });
 }
@@ -116,6 +117,11 @@ npm install
 nodejs asyncParallelMap.js
 ```
 
+The output is:
+
+```
+titles [ 'Google', 'Bing' ]
+```
 
 ### Further reading 
 
