@@ -1,4 +1,7 @@
 
+
+## async map recipe
+
 When you have an `array` of items which you want to "map" to tasks, to run in parallel, and finally process the results when all tasks are complete:
 
 ```javascript
