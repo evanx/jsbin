@@ -19,6 +19,7 @@
   "dependencies": {
     "async": "^0.9.0",
     "lodash": "^3.5.0",
-    "require": "^2.4.17"
+    "require": "^2.4.17",
+    "request": "~2.53.0"
   }
 }
