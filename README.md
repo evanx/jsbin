@@ -7,7 +7,7 @@ When you have an `array` of items which you want to "map" to tasks, to run in pa
 async.parallel(lodash(array).map(function(item) { 
    return function(callback) { // create an async task for item
       ... // some processing on item
-      someAsync(..., function(err, result) { // some async call
+      someAsync(..., function(err, result) { // some async call for item
          if (err) {
             callback(err);
          } else { // success
@@ -94,7 +94,7 @@ function testFetchURLs() {
          throw new Error(err);
       } else {
          var titles = lodash.map(results, function(content) {
-            return content.match(/<title>(.*)<\/title>.*/)[1];   
+            return content.match(/<title>(.*)<\/title>/)[1];   
          });
          console.info('titles', titles);
          assert.equal(titles[0], 'Google');
