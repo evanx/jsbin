@@ -96,7 +96,7 @@ function testFetchURLs() {
          var titles = lodash.map(results, function(content) {
             return content.match(/<title>(.*)<\/title>/)[1];   
          });
-         console.info('titles', titles);
+         console.info('titles', titles); // titles [ 'Google', 'Bing' ]
          assert.equal(titles[0], 'Google');
          assert.equal(titles[1], 'Bing');
       }
