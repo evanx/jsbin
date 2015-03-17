@@ -38,8 +38,6 @@ For example, consider we have an `array` of URLs to fetch:
 
 
 ```javascript
-// require async, lodash, request
-
 async.parallel(lodash(urls).map(function(url) { 
    return function(callback) {
       request(url, function(err, response, content) {
