@@ -1,0 +1,11 @@
+.idea
+nbproject
+bower_components
+node_modules
+tmp
+build
+logs
+backups
+/conf
+*.log
+*.out
