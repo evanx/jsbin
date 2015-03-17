@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/evanx/jspatterns/issues"
   },
-  "homepage": "https://github.com/evanx/jspatterns"
+  "homepage": "https://github.com/evanx/jspatterns",
+  "dependencies": {
+    "async": "^0.9.0",
+    "lodash": "^3.5.0",
+    "require": "^2.4.17"
+  }
 }
