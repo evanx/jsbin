@@ -22,7 +22,7 @@ function fetchURLs(urls, then) {
 }
 
 function getTitle(content) {
-   return content.match(/<title>(.*)<\/title>.*/)[1];   
+  return content.match(/<title>(.*)<\/title>.*/)[1];   
 }
 
 function testFetchURLs() {
@@ -30,6 +30,9 @@ function testFetchURLs() {
       if (err) {
          throw new Error(err);
       } else {
+         results.forEach(function(content) {
+            console.info('title', getTitle(content));
+         });
          assert.equal(getTitle(results[0]), 'Google');
          assert.equal(getTitle(results[1]), 'Bing');
       }
