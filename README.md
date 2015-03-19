@@ -7,11 +7,10 @@ When you have an `array` of items which you want to "map" to tasks, to run in pa
 async.parallel(lodash(array).map(function(item) { 
    return function(callback) { // create an async task for item
       ... // some processing on item
-      someAsync(..., function(err, result) { // some async call for item
+      something(..., function(err, result) { // some async call
          if (err) {
             callback(err);
          } else { // success
-            ... // some processing of result
             callback(null, result);
          }
       });
@@ -37,7 +36,10 @@ async.parallel(lodash(array).filter(function(item) {
 
 For example, consider we have an `array` of URLs to fetch:
 
+
 ```javascript
+// require async, lodash, request
+
 async.parallel(lodash(urls).map(function(url) { 
    return function(callback) {
       request(url, function(err, response, content) {
@@ -94,9 +96,9 @@ function testFetchURLs() {
          throw new Error(err);
       } else {
          var titles = lodash.map(results, function(content) {
-            return content.match(/<title>(.*)<\/title>/)[1];   
+            return content.match(/<title>(.*)<\/title>.*/)[1];   
          });
-         console.info('titles', titles); // titles [ 'Google', 'Bing' ]
+         console.info('titles', titles);
          assert.equal(titles[0], 'Google');
          assert.equal(titles[1], 'Bing');
       }
