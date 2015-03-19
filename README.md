@@ -130,7 +130,7 @@ See: https://github.com/evanx/jsbin/blob/master/asyncMap.js
 git clone https://github.com/evanx/jsbin.git
 cd jsbin
 npm install
-nodejs asyncParallelMap.js
+nodejs asyncMap.js
 ```
 
 The output is:
