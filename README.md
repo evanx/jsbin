@@ -7,54 +7,10 @@ See https://github.com/evanx/jsbin/blob/master/hydratePromises
 ### Abstract
 
 ```javascript
-var FrontPage = React.createClass({
-   statics: {
-      hydratePomises: {
-         frontpageArticles: function(resolver, params) {
-            return resolver.loadSectionArticles('Frontpage', params);
-         },
-         sportArticles: function(resolver, params) {
-            return resolver.loadSectionArticles('Sport', params);
-         },
-         popularArticles: function(resolver, params) {
-            return resolver.loadSectionArticles('Popular', params);
-         }
-      }
-   },
-   componentDidMount: function () {
-      var params = { frontpageArticleCount: 30 };
-      commonFunctions.hydratePromises(FrontPage, this, params);
-   },
 ```
 where our app's `loadSectionArticles` returns an ES6 `Promise` for data, and we hydrate our state as follows:
 ```javascript
 var commonFunctions = {
-   getSectionArticles: function(sectionLabel) {
-      var url = config.publisherBaseUrl + 'section/' + sectionLabel;
-      return netFunctions.getJSON(url);
-   },
-   hydratePromises: function(Component, instance, params) {
-      var promises = Component.hydratePromises;
-      log.info('hydrate', Object.keys(promises));
-      var state = {};
-      function set(key, data) {
-         state[key] = data;
-         if (Object.keys(state).length === Object.keys(promises).length) {
-            log.info('hydrate resolved');
-            instance.setState(state);
-         }
-      }
-      Object.keys(promises).forEach(key => {
-         log.info('hydrate promise', key);
-         promises[key](commonFunctions, params).then(function(data) {
-            log.info('hydrate promise resolved', key);
-            set(key, data);
-         }, function(error) {
-            log.error('hydrate promise rejected', key, error);
-            set(key, []);
-         }));
-      });
-   }
 }
 ```
 
