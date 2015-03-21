@@ -6,7 +6,7 @@ See https://github.com/evanx/jsbin/blob/master/hydratePromises
 
 ### Abstract
 
-We introduce a mixin and invoke its `hydratePromises` utility function as follows:
+We introduce a mixin and invoke its `hydrateFromPromises` utility function as follows:
 
 ```javascript
 var FrontPage = React.createClass({
