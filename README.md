@@ -2,7 +2,7 @@
 
 ## React hydrate recipe
 
-https://github.com/evanx/jsbin/blob/master/docs/hydrate.md
+https://github.com/evanx/jsbin/blob/master/docs/hydratePromises.md
 
 ```javascript
 var FrontPage = React.createClass({
