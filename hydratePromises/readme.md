@@ -1,9 +1,11 @@
 
 ## Hydrating React component state via promises 
 
-Consider a rather trivial component which fetches data from a couple of endpoints.
+Consider a rather trivial component which fetches data from a couple of endpoints, to render some content. 
 
-We introduce a mixin and invoke its `hydratePromises` utility function as follows:
+Perhaps this is for a prototype, and so we want a "quick and dirty" means of hydrating our state.
+
+So we introduce a mixin and invoke its `hydratePromises` utility function as follows:
 
 ```javascript
 var FrontPage = React.createClass({
