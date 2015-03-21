@@ -8,20 +8,17 @@ and then reading about Relay and GraphQL: https://facebook.github.io/react/blog/
 
 ### State queries
 
-Let's take a cue from Relay and introduce a static `hydratePromises` for our required `state.` 
+Let's take a cue from Relay and introduce static resolvers for our component's required `state.` 
 
 ```javascript
 var FrontPage = React.createClass({
    statics: {
-      hydratePomises: {
-         frontpageArticles: function(handler, params) {
-            return handler.loadSectionArticles('Frontpage', params);
+      hydratePromises: {
+         frontpageArticles: function(resolver, params) {
+            return resolver.loadSectionArticles('Frontpage', params);
          },
-         sportArticles: function(handler, params) {
-            return handler.loadSectionArticles('Sport', params);
-         },
-         popularArticles: function(handler, params) {
-            return handler.loadSectionArticles('Popular', params);
+         popularArticles: function(resolver, params) {
+            return resolver.loadSectionArticles('Popular', params);
          }
       }
    },
@@ -32,7 +29,7 @@ var FrontPage = React.createClass({
    ...
 }
 ```
-We have invoked `commonFunctions.loadSectionArticles` which returns an ES6 `Promise` for data being fetched asynchronously. This migh be from server endpoints, or perhaps directly from Redis if on the server. So `commonFunctions` might have a different implementation on the server vs the client.
+Our resolvers ionvoke `loadSectionArticles` which returns an ES6 `Promise` for data being fetched asynchronously. This might be from HTTP endpoints, or perhaps directly from Redis if on the server. So our `handler` might have a different implementation on the server vs the client.
 
 Hopefuly the above can be used isomorphically i.e. to prerender components server-side after hydrating their state.
 
@@ -62,8 +59,8 @@ We hydrate our component state as follows:
       }
       Object.keys(promises).forEach(key => {
          log.info('hydrate promise', key);
-         log.info('hydrate promise', key, promises[key](commonFunctions, params).then(function(data) {
-            log.info('hydrate promise resolved', key, data.length || Object.keys(data));
+         promises[key](commonFunctions, params).then(function(data) {
+            log.info('hydrate promise resolved', key);
             set(key, data);
          }, function(error) {
             log.error('hydrate promise rejected', key, error);
@@ -73,7 +70,7 @@ We hydrate our component state as follows:
    },
 ```
 
-Incidently, we haven't addressed "overfetching," which is something that is solved elegantly by GraphQL. So that should be a next step. I guess we should filter our results in `hydratePromises` to extract only the data that is actually rendered. Then we should enable a generic query in the form of a collection of components requiring hydration in order to render a page, e.g. the page component and its children). Also we should support their parameters e.g. the number of articles (to enable pagination). 
+Incidently, we haven't addressed "overfetching," which is something that is solved elegantly by GraphQL. So that should be the next step. I guess we should filter our results in `hydratePromises` to extract only the data that is actually rendered. Then we should enable a generic query in the form of the set of dependent components required render a page, e.g. the page component and its children.
 
 ```javascript
 var FrontPage = React.createClass({
@@ -92,7 +89,12 @@ Then on the server, we could use `hydratePromises` to dynamically assemble the r
      ...
   },
   FrontPage: {
-     ...
+     frontpageArticles: [
+        ...
+     ],
+     popularArticles: [
+        ...
+     ]
   }
 }```
 

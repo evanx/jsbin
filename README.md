@@ -10,14 +10,14 @@ See https://github.com/evanx/jsbin/blob/master/hydratePromises
 var FrontPage = React.createClass({
    statics: {
       hydratePomises: {
-         frontpageArticles: function(handler, params) {
-            return handler.loadSectionArticles('Frontpage', params);
+         frontpageArticles: function(resolver, params) {
+            return resolver.loadSectionArticles('Frontpage', params);
          },
-         sportArticles: function(handler, params) {
-            return handler.loadSectionArticles('Sport', params);
+         sportArticles: function(resolver, params) {
+            return resolver.loadSectionArticles('Sport', params);
          },
-         popularArticles: function(handler, params) {
-            return handler.loadSectionArticles('Popular', params);
+         popularArticles: function(resolver, params) {
+            return resolver.loadSectionArticles('Popular', params);
          }
       }
    },
@@ -26,7 +26,7 @@ var FrontPage = React.createClass({
       commonFunctions.hydratePromises(FrontPage, this, params);
    },
 ```
-where our `loadSectionArticles` returns an ES6 `Promise` for an HTTP JSON endpoint, and we hydrate our state as follows:
+where our app's `loadSectionArticles` returns an ES6 `Promise` for data, and we hydrate our state as follows:
 ```javascript
 var commonFunctions = {
    getSectionArticles: function(sectionLabel) {
@@ -46,8 +46,8 @@ var commonFunctions = {
       }
       Object.keys(promises).forEach(key => {
          log.info('hydrate promise', key);
-         log.info('hydrate promise', key, promises[key](commonFunctions, params).then(function(data) {
-            log.info('hydrate promise resolved', key, data.length || Object.keys(data));
+         promises[key](commonFunctions, params).then(function(data) {
+            log.info('hydrate promise resolved', key);
             set(key, data);
          }, function(error) {
             log.error('hydrate promise rejected', key, error);
