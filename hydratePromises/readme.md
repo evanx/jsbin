@@ -3,7 +3,7 @@
 
 Consider a rather trivial component which fetches data from various endpoints.
 
-We introduce a `hydratePromises` utility function to hydrate our component's required state:
+We introduce a mixin and invoke its `hydratePromises` utility function as follows:
 
 ```javascript
 var FrontPage = React.createClass({
