@@ -28,7 +28,7 @@ where our `loadSectionArticles` returns an ES6 `Promise.`
 Hopefuly the above can be used isomorphically i.e. to prerender components server-side after hydrating their state e.g. from REST endpoints.
 
 where our `commonFunctions` are shared utilities e.g. to fetch data:
-```
+```javascript
 var commonFunctions = {
    loadSectionArticles: function(sectionLabel) {
       var url = config.publisherBaseUrl + 'section/' + sectionLabel;
@@ -45,7 +45,7 @@ var commonFunctions = {
 }
 ```
 and then hydrate our component state:
-```
+```javascript
    hydrateComponentState: function(component) {
       var promise = component.statics.hydratePromises;
       log.info('hydrate', Object.keys(promises));
