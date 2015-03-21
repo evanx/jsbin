@@ -5,7 +5,7 @@ Consider a rather trivial component which fetches data from a couple of endpoint
 
 Perhaps this is for a prototype, and so we want a "quick and dirty" means of hydrating our state.
 
-So we introduce a mixin and invoke its `hydratePromises` utility function as follows:
+We introduce a mixin for `hydratePromises` which we can use as follows:
 
 ```javascript
 var FrontPage = React.createClass({
@@ -42,7 +42,7 @@ var HydratePromisesMixin = {
       Object.keys(promises).forEach(key => {
          log.info('hydrate promise', key);
          promises[key]().then(data => {
-            log.info('hydrate promise resolved', key, data.length || Object.keys(data));
+            log.info('hydrate promise resolved', key);
             set(key, data);
          }, function(error) {
             log.error('hydrate promise rejected', key, error);
