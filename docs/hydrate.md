@@ -1,5 +1,4 @@
 
-
 ## React hydrate recipe
 
 https://github.com/evanx/jsbin/blob/master/docs/hydrate.md
@@ -22,10 +21,31 @@ var FrontPage = React.createClass({
    componentDidMount: function () {
       commonFunctions.hydrateComponentState(this);
    },
+
 ```
-where our `loadSectionArticles` returns an ES6 `Promise` for an HTTP JSON endpoint, and we hydrate our state as follows:
+where our `loadSectionArticles` returns an ES6 `Promise.`
+
+Hopefuly the above can be used isomorphically i.e. to prerender components server-side after hydrating their state e.g. from REST endpoints.
+
+where our `commonFunctions` are shared utilities e.g. to fetch data:
 ```
 var commonFunctions = {
+   loadSectionArticles: function(sectionLabel) {
+      var url = config.publisherBaseUrl + 'section/' + sectionLabel;
+      return new Promise((resolve, reject) => {
+         netFunctions.loadJSON(url).then(function(data) {
+            resolve(data);
+         },
+         function(err) {
+            reject(err);
+         });
+      });
+   },
+   ...
+}
+```
+and then hydrate our component state:
+```
    hydrateComponentState: function(component) {
       var promise = component.statics.hydratePromises;
       log.info('hydrate', Object.keys(promises));
@@ -49,34 +69,3 @@ var commonFunctions = {
       });
    },   
 ```
-
-## async map recipe
-
-https://github.com/evanx/jsbin/blob/master/docs/asyncMap.md
-
-When you have an `array` of items which you want to "map" to tasks, to run in parallel, and finally process the results when all tasks are complete:
-
-```javascript
-async.parallel(lodash(array).map(function(item) { 
-   return function(callback) { // create an async task for item
-      ... // some processing on item
-      someAsync(..., function(err, result) { // some async call for item
-         if (err) {
-            callback(err);
-         } else { // success
-            ... // some processing of result
-            callback(null, result);
-         }
-      });
-   }).value(), function(err, results) {
-      if (err) {
-         // a task failed
-      } else {
-         // yay, all tasks executed ok
-      }
-   }
-);
-```
-
-where `lodash` chaining is used, hence the final `value()`. This enables other methods to be added easily e.g. `filter` <i>et al.</i>
-
