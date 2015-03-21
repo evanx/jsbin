@@ -28,24 +28,24 @@ We hydrate our component state as follows:
 ```javascript
 var HydrateFromPromisesMixin = {
    hydrateFromPromises: function(promises) {
-      log.info('hydrate', Object.keys(promises));
+      log.debug('hydrate', Object.keys(promises));
       let that = this;
       let count = 0;
       function set(key, data) {
          that.state[key] = data;
          count += 1;
          if (count === Object.keys(promises).length) {
-            log.info('hydrate resolved');
+            log.debug('hydrate resolved');
             that.setState(that.state);
          }
       }
       Object.keys(promises).forEach(key => {
          log.info('hydrate promise', key);
          promises[key]().then(data => {
-            log.info('hydrate promise resolved', key);
+            log.debug('hydrate promise resolved', key);
             set(key, data);
          }, function(error) {
-            log.error('hydrate promise rejected', key, error);
+            log.debug('hydrate promise rejected', key, error);
             set(key);
          });
       });
