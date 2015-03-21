@@ -1,5 +1,5 @@
 
-## React hydrate recipe
+## Recipe to hydrate React component state via promises 
 
 PS. These thoughts and efforts inspired by a great talk I attended this week:
 <br>http://www.meetup.com/nodecpt/events/220703443
