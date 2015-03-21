@@ -103,7 +103,7 @@ Then on the server, we could use `hydratePromises` to dynamically assemble the r
 }
 ```
 
-However we must handle params for pagination (or infinite scrolling), and especially not refetching earlier items we already have on the client in the "store." I guess the query params must include how many items we already have in our store so we don't refetch those. We then add the new items into our store. Finally our component's `state` is set from the store.
+However we must handle params for pagination (or infinite scrolling), and especially not refetching earlier items we already have on the client in the "store." I guess the query params must include how many items we already have in our store so we don't refetch those. We then append the new items into our store. Finally our component's `state` is set from the store.
 
 Even better, we should just use Relay and GraphQL :)
 
