@@ -29,7 +29,7 @@ var FrontPage = React.createClass({
    ...
 }
 ```
-Our resolvers invoke `loadSectionArticles` which returns an ES6 `Promise` for data being fetched asynchronously. This might be from HTTP endpoints, or perhaps directly from Redis if on the server. So our `handler` might have a different implementation on the server vs the client.
+Our resolvers invoke `loadSectionArticles` which returns an ES6 `Promise` for data being fetched asynchronously. This might be from HTTP endpoints, or perhaps directly from Redis if we are pre-rendering our component on the server. So our `handler` might have a different implementation on the server vs the client.
 
 Hopefuly the above can be used isomorphically i.e. to prerender components server-side after hydrating their state.
 
