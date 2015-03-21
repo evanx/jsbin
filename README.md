@@ -4,6 +4,8 @@
 
 See https://github.com/evanx/jsbin/blob/master/hydratePromises
 
+### Abstract
+
 Consider a rather trivial component which fetches data from various endpoints.
 
 We introduce a mixin and invoke its `hydratePromises` utility function as follows:
