@@ -2,6 +2,7 @@
 
 ## async map recipe
 
+
 When you have an `array` of items which you want to "map" to tasks, to run in parallel, and finally process the results when all tasks are complete:
 
 ```javascript
@@ -105,7 +106,7 @@ function testFetchURLs() {
 }
 ```
 
-See: https://github.com/evanx/jsbin/blob/master/asyncParallelMap.js
+See: https://github.com/evanx/jsbin/blob/master/asyncMap/asyncMap.js
 
 ### Test 
 
