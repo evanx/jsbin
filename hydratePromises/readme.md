@@ -6,7 +6,7 @@ PS. These thoughts and efforts inspired by a great talk I attended this week: ht
 and then reading about Relay and GraphQL: https://facebook.github.io/react/blog/2015/02/20/introducing-relay-and-graphql.html
 
 
-### State queries
+### Promises
 
 Let's take a cue from Relay and introduce static resolvers for our component's required `state.` 
 
@@ -70,6 +70,9 @@ We hydrate our component state as follows:
    },
 ```
 
+
+### Next steps
+
 Incidently, we haven't addressed "overfetching," which is something that is solved elegantly by GraphQL. So that should be the next step. I guess we should filter our results in `hydratePromises` to extract only the data that is actually rendered. Then we should enable a generic query in the form of the set of dependent components required render a page, e.g. the page component and its children.
 
 ```javascript
@@ -98,3 +101,6 @@ Then on the server, we could use `hydratePromises` to dynamically assemble the r
   }
 }```
 
+Or we should migrate to using Relay and GraphQL :)
+
+https://twitter.com/evanxsummers
