@@ -89,17 +89,17 @@ Then on the server, we could use `hydratePromises` to dynamically assemble the r
 
 ```javascript
 { 
-  "Header": {
-     ...
-  },
-  "FrontPage": {
-     "frontpageArticles": [
-        ...
-     ],
-     "popularArticles": [
-        ...
-     ]
-  }
+   "Header": {
+      ...
+   },
+   "FrontPage": {
+      "frontpageArticles": [
+         ...
+      ],
+      "popularArticles": [
+         ...
+      ]
+   }
 }
 ```
 
