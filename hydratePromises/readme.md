@@ -20,6 +20,7 @@ var FrontPage = React.createClass({
       });
    },
 ```
+where `frontpageArticles` and `popularArticles` are to be properties of `state.` For these we specify a function which returns an ES6 `Promise` for the data to be fetched.
 
 We hydrate our component state as follows:
 ```javascript

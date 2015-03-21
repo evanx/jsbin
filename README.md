@@ -23,7 +23,6 @@ var FrontPage = React.createClass({
       });
    },
 ```
-where `frontpageArticles` and `popularArticles` are to be properties of `state.`
 
 
 ## async map recipe
