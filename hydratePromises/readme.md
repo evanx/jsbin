@@ -5,7 +5,7 @@ Consider a rather trivial component which fetches data from some endpoints, to r
 
 Perhaps this is for a prototype, and so we want a quick opininated means of hydrating our state.
 
-We introduce a mixin for `hydrateFromPromises` which we can use as follows:
+So we introduce a mixin for `hydrateFromPromises` which we can use as follows:
 
 ```javascript
 var FrontPage = React.createClass({
