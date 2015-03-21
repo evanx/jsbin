@@ -15,10 +15,10 @@ var FrontPage = React.createClass({
       log.info('componentDidMount');
       this.hydratePromises({
          frontpageArticles: function() {
-            return resolver.getArticles('/feed/Frontpage');
+            return httpFunctions.getPromise('/feed/Frontpage');
          },
          popularArticles: function() {
-            return resolver.getArticles('/feed/Popular');
+            return httpFunctions.getPromise('/feed/Popular');
          }
       });
    },
