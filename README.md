@@ -1,4 +1,5 @@
 
+# Some code snippets
 
 ## React hydrate recipe
 
@@ -25,7 +26,7 @@ var FrontPage = React.createClass({
 ```
 
 
-## async map recipe
+## Async map recipe
 
 See: https://github.com/evanx/jsbin/blob/master/asyncMap
 
