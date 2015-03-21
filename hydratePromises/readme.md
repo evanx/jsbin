@@ -1,5 +1,5 @@
 
-## TechNote: Hydrating React component state via promises 
+## Hydrating React component state via promises 
 
 Consider a rather trivial component which fetches data from various endpoints.
 
