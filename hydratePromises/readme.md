@@ -25,7 +25,7 @@ var FrontPage = React.createClass({
       }
    },
    componentDidMount: function () {
-      var params = { frontpageArticleCount: 30 };
+      var params = { frontpageArticleOffset: 0 };
       commonFunctions.hydratePromises(FrontPage, this, params);
    },
 ```
@@ -79,29 +79,18 @@ I guess we should filter our results in `hydratePromises` to extract only the da
 ```javascript
 var FrontPage = React.createClass({
    statics: {
-     requires: [
-        NewsSection, PopularSection
-     ]
+      requires: {
+         NewsSection: function(resolver, params) {
+            return { articleOffset: resolver.getNewsArticlesCount() };
+         },
+         PopularSection: function(resolver, params) {
+            return { articleOffset: resolver.getPopularArticlesCount() };
+         }
+      }
    },
 ```
 
-Then on the server, we could use `hydratePromises` to dynamically assemble the resultant `state` for each component, to deliver that to the client, for example:
-
-```javascript
-{ 
-   "Header": {
-      ...
-   },
-   "FrontPage": {
-      "frontpageArticles": [
-         ...
-      ],
-      "popularArticles": [
-         ...
-      ]
-   }
-}
-```
+Then on the server, we could use `hydratePromises` to dynamically assemble the `state` for each component, to deliver that to the client, for example:
 
 However we must handle params for pagination (or infinite scrolling), and especially not refetching earlier items we already have on the client in the "store." I guess the query params must include how many items we already have in our store so we don't refetch those. We then append the new items into our store. Finally our component's `state` is set from the store.
 
