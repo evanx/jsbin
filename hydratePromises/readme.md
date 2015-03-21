@@ -87,7 +87,7 @@ var FrontPage = React.createClass({
 
 Then on the server, we could use `hydratePromises` to dynamically assemble the resultant `state` for each component, to deliver that to the client, for example:
 
-```json
+```javascript
 { 
   "Header": {
      ...
