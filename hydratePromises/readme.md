@@ -1,18 +1,18 @@
 
-## Hydrating React component state via promises 
+## Hydrating React component state from promises 
 
-Consider a rather trivial component which fetches data from a couple of endpoints, to render some content. 
+Consider a rather trivial component which fetches data from some endpoints, to render some content. 
 
-Perhaps this is for a prototype, and so we want a "quick and dirty" means of hydrating our state.
+Perhaps this is for a prototype, and so we want a "quick and dirty" opininated means of hydrating our state.
 
 We introduce a mixin for `hydratePromises` which we can use as follows:
 
 ```javascript
 var FrontPage = React.createClass({
-   mixins: [ HydratePromisesMixin ],
+   mixins: [ HydrateFromPromisesMixin ],
    componentDidMount: function () {
       log.info('componentDidMount');
-      this.hydratePromises({
+      this.hydrateFromPromises({
          frontpageArticles: function() {
             return httpFunctions.getPromise('/feed/Frontpage');
          },
@@ -26,8 +26,8 @@ where `frontpageArticles` and `popularArticles` are to be properties of `state.`
 
 We hydrate our component state as follows:
 ```javascript
-var HydratePromisesMixin = {
-   hydratePromises: function(promises) {
+var HydrateFromPromisesMixin = {
+   hydrateFromPromises: function(promises) {
       log.info('hydrate', Object.keys(promises));
       let that = this;
       let count = 0;
