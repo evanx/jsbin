@@ -70,16 +70,17 @@ We hydrate our component state as follows:
    },
 ```
 
+## Overfetching 
 
-### Next steps
+However, we haven't addressed "overfetching," which is something that is solved elegantly by Relay, and is one of its killer features :)
 
-Incidently, we haven't addressed "overfetching," which is something that is solved elegantly by GraphQL. So that should be the next step. I guess we should filter our results in `hydratePromises` to extract only the data that is actually rendered. Then we should enable a generic query in the form of the set of dependent components required render a page, e.g. the page component and its children.
+I guess we should filter our results in `hydratePromises` to extract only the data that is actually rendered. Then we should enable a generic query in the form of the set of dependent components required render a page, e.g. the page component and its children.
 
 ```javascript
 var FrontPage = React.createClass({
    statics: {
      requires: [
-        NewsSection, SportSection, PopularSection
+        NewsSection, PopularSection
      ]
    }
 ```
@@ -99,8 +100,9 @@ Then on the server, we could use `hydratePromises` to dynamically assemble the r
         ...
      ]
   }
-}```
+}
+```
 
-Or we should migrate to using Relay and GraphQL :)
+However we must handle params for pagination (or infinite scrolling), and especially not refetching earlier items we already have on the client in the "store." I guess the query params could include how many items we already have in our store on the client, so we don't refetch those. We then add the new items into our store. Finally our `state` is set from the store.
 
 https://twitter.com/evanxsummers
