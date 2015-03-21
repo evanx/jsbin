@@ -7,6 +7,20 @@ See https://github.com/evanx/jsbin/blob/master/hydratePromises
 ### Abstract
 
 ```javascript
+   componentDidMount: function () {
+      log.info('componentDidMount');
+      commonFunctions.hydratePromises(this, {
+         frontpageArticles: function() {
+            return commonFunctions.loadSectionArticles('Frontpage');
+         },
+         sportArticles: function() {
+            return commonFunctions.loadSectionArticles('Sport');
+         },
+         popularArticles: function() {
+            return commonFunctions.loadSectionArticles('Popular');
+         }
+      });
+   },
 ```
 where our app's `loadSectionArticles` returns an ES6 `Promise` for data, and we hydrate our state as follows:
 ```javascript
