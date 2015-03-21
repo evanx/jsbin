@@ -53,6 +53,3 @@ async.map(urls, function(url, callback) {
    }
 });
 ```
-
-```
-
