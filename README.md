@@ -1,7 +1,7 @@
 
 # Just Snippets
 
-This is not a useable project, just some technical articles and snippets on my JavaScript adventures
+This is not a useable project, just some technical articles and snippets on my JavaScript adventures.
 
 
 ## React hydrate recipe
