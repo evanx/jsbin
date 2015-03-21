@@ -26,7 +26,7 @@ var FrontPage = React.createClass({
    },
 ```
 where our `loadSectionArticles` returns an ES6 `Promise` for an HTTP JSON endpoint, and we hydrate our state as follows:
-```
+```javascript
 var commonFunctions = {
    hydrateComponentState: function(component) {
       var promise = component.statics.hydratePromises;
