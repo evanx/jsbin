@@ -89,14 +89,14 @@ Then on the server, we could use `hydratePromises` to dynamically assemble the r
 
 ```json
 { 
-  Header: {
+  "Header": {
      ...
   },
-  FrontPage: {
-     frontpageArticles: [
+  "FrontPage": {
+     "frontpageArticles": [
         ...
      ],
-     popularArticles: [
+     "popularArticles": [
         ...
      ]
   }
