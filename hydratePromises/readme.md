@@ -72,7 +72,8 @@ We hydrate our component state as follows:
    },
 ```
 
-## Overfetching 
+
+### Next steps
 
 However, we haven't addressed "overfetching," which is something that is solved elegantly by Relay, and is one of its killer features :)
 
