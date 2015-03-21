@@ -1,8 +1,6 @@
 
 ## React hydrate recipe
 
-https://github.com/evanx/jsbin/blob/master/docs/hydrate.md
-
 ```javascript
 var FrontPage = React.createClass({
    statics: {
