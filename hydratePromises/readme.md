@@ -3,7 +3,9 @@
 
 Consider a rather trivial component which fetches data from some endpoints, to render some content. 
 
-Perhaps this is for a prototype, and we want a quick opininated means of hydrating our state.
+Sure, there's Flux, and Relay/GraphQL and what have you.
+
+But perhaps this is for a prototype, and we want a "quick and dirty" opininated means of hydrating our state.
 
 So we introduce a mixin for `hydrateFromPromises` which we can use as follows:
 
