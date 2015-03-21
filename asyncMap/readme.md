@@ -8,10 +8,11 @@ When you have an `array` of items which you want to "map" to tasks, to run in pa
 async.parallel(lodash(array).map(function(item) { 
    return function(callback) { // create an async task for item
       ... // some processing on item
-      something(..., function(err, result) { // some async call
+      someAsync(..., function(err, result) { // some async call for item
          if (err) {
             callback(err);
          } else { // success
+            ... // some processing of result
             callback(null, result);
          }
       });
@@ -24,22 +25,70 @@ async.parallel(lodash(array).map(function(item) {
    }
 );
 ```
-where `lodash` chaining is used, hence the final `value()`. This enables a `filter` on the array as follows: 
+
+where `lodash` chaining is used, hence the final `value()`. This enables other methods to be added easily e.g. `filter` <i>et al</i> as follows: 
+
 ```javascript
 async.parallel(lodash(array).filter(function(item) {
       return true; // or false to exclude
-   }).map(function(item) ...
+   }).slice(1).take(2).map(function(item) { 
+      ...
+```
+
+Otherwise, using `async.map` is more concise:
+
+```javascript
+async.map(urls, function(url, callback) {
+   request(url, function(err, response, content) {
+      if (err) {
+         callback(err);
+      } else if (response.statusCode !== 200) {
+         callback({message: 'HTTP code: ' + response.statusCode});
+      } else {
+         callback(null, content);
+      }
+   })
+}, function(err, results) {
+      ...
+   }
+);
 ```
 
 ### Example 
 
 For example, consider we have an `array` of URLs to fetch:
-```javascript
-// require async, lodash, request
 
-async.parallel(lodash(urls).map(function(url) { 
-   return function(callback) {
-      request(url, function(err, response, content) {
+```javascript
+async.map(urls, function(url, callback) { 
+   request(url, function(err, response, content) {
+      if (err) {
+         callback(err);
+      } else if (response.statusCode !== 200) {
+         callback({message: 'HTTP code: ' + response.statusCode});
+      } else {
+         callback(null, content);
+      }
+   });
+ }, function(err, results) {
+   if (err) {
+      console.error('error fetching URLs', err);
+   } else {
+      console.error('fetched URLs', results.length);
+   }
+});
+```
+
+This might be wrapped in a function as follows:
+
+```javascript
+var async = require('async');
+var lodash = require('lodash');
+var request = require('request');
+var assert = require('assert');
+
+function fetchURLs(urls, then) {
+   async.map(urls, function (url, callback) {
+      request(url, function (err, response, content) {
          if (err) {
             callback(err);
          } else if (response.statusCode !== 200) {
@@ -48,37 +97,7 @@ async.parallel(lodash(urls).map(function(url) {
             callback(null, content);
          }
       });
-   }).value(), function(err, results) {
-      if (err) {
-         console.error('error fetching URLs', err);
-      } else {
-         console.error('fetched URLs', results.length);
-      }
-   }
-);
-```
-
-This might be wrapped in a function as follows:
-
-```javascript
-var async = require('async');
-    lodash = require('lodash');
-    request = require('request');
-
-function fetchURLs(urls, then) {
-   async.parallel(lodash(urls).map(function(url) {
-      return function (callback) {
-         request(url, function (err, response, content) {
-            if (err) {
-               callback(err);
-            } else if (response.statusCode !== 200) {
-               callback({message: 'HTTP code: ' + response.statusCode});
-            } else {
-               callback(null, content);
-            }
-         });
-      };
-   }).value(), then);
+   }, then);
 }
 ```
 
@@ -91,17 +110,19 @@ function testFetchURLs() {
       if (err) {
          throw new Error(err);
       } else {
-         results.forEach(function(content, index) {
-            console.info('title', urls[index], getTitle(content));
+         var titles = lodash.map(results, function(content) {
+            return content.match(/<title>(.*)<\/title>/)[1];   
          });
-         assert.equal(getTitle(results[0]), 'Google');
-         assert.equal(getTitle(results[1]), 'Bing');
+         console.info('titles', titles); // titles [ 'Google', 'Bing' ]
+         assert.equal(titles[0], 'Google');
+         assert.equal(titles[1], 'Bing');
       }
    });
 }
 ```
 
-See: https://github.com/evanx/jsbin/blob/master/asyncMap/asyncMap.js
+See: https://github.com/evanx/jsbin/blob/master/asyncMap.js
+
 
 ### Test 
 
@@ -109,9 +130,14 @@ See: https://github.com/evanx/jsbin/blob/master/asyncMap/asyncMap.js
 git clone https://github.com/evanx/jsbin.git
 cd jsbin
 npm install
-nodejs asyncParallelMap.js
+nodejs asyncMap.js
 ```
 
+The output is:
+
+```
+titles [ 'Google', 'Bing' ]
+```
 
 ### Further reading 
 
