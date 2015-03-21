@@ -28,8 +28,6 @@ var FrontPage = React.createClass({
       var params = { frontpageArticleCount: 30 };
       commonFunctions.hydratePromises(FrontPage, this, params);
    },
-   ...
-}
 ```
 Hopefuly the above `hydratePromises` can be used isomorphically i.e. to prerender components on the server.
 
@@ -43,7 +41,6 @@ var commonFunctions = {
       return netFunctions.getJSON(url);
    },
    ...
-}
 ```
 
 We hydrate our component state as follows:
@@ -85,7 +82,7 @@ var FrontPage = React.createClass({
      requires: [
         NewsSection, PopularSection
      ]
-   }
+   },
 ```
 
 Then on the server, we could use `hydratePromises` to dynamically assemble the resultant `state` for each component, to deliver that to the client, for example:
