@@ -3,7 +3,7 @@
 
 Consider a rather trivial component which fetches data from some endpoints, to render some content. 
 
-Sure, there's Flux, and Relay/GraphQL and what have you.
+Sure, there's Flux, Relay/GraphQL and what have you.
 
 But perhaps this is for a prototype, and we want a "quick and dirty" opininated means of hydrating our state.
 
