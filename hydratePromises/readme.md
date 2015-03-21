@@ -1,7 +1,7 @@
 
 ## Hydrating React component state via promises 
 
-Consider a rather trivial component which fetches data from various endpoints.
+Consider a rather trivial component which fetches data from a couple of endpoints.
 
 We introduce a mixin and invoke its `hydratePromises` utility function as follows:
 
@@ -12,15 +12,15 @@ var FrontPage = React.createClass({
       log.info('componentDidMount');
       this.hydratePromises({
          frontpageArticles: function() {
-            return resolver.getArticles('/feed/Frontpage');
+            return httpFunctions.getPromise('/feed/Frontpage');
          },
          popularArticles: function() {
-            return resolver.getArticles('/feed/Popular');
+            return httpFunctions.getPromise('/feed/Popular');
          }
       });
    },
 ```
-where `frontpageArticles` and `popularArticles` are to be properties of `state.` For these we specify a function which returns an ES6 `Promise` for the data to be fetched.
+where `frontpageArticles` and `popularArticles` are to be properties of `state.` For these we specify a function which returns an ES6 `Promise` for the data to be loaded.
 
 We hydrate our component state as follows:
 ```javascript
