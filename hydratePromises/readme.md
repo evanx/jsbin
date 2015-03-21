@@ -42,7 +42,7 @@ var HydratePromisesMixin = {
          promises[key]().then(data => {
             log.info('hydrate promise resolved', key, data.length || Object.keys(data));
             set(key, data);
-         }, function(error, data) {
+         }, function(error) {
             log.error('hydrate promise rejected', key, error);
             set(key);
          });
