@@ -32,7 +32,7 @@ var HydratePromisesMixin = {
       function set(key, data) {
          that.state[key] = data;
          count += 1;
-         if (count  === Object.keys(promises).length) {
+         if (count === Object.keys(promises).length) {
             log.info('hydrate resolved');
             that.setState(that.state);
          }
