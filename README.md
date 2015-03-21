@@ -9,39 +9,44 @@ See https://github.com/evanx/jsbin/blob/master/hydratePromises
 ```javascript
 var FrontPage = React.createClass({
    statics: {
-      hydratePromises: {
-         frontpageArticles: function() {
-            return commonFunctions.loadSectionArticles('Frontpage');
+      hydratePomises: {
+         frontpageArticles: function(handler, params) {
+            return handler.loadSectionArticles('Frontpage', params);
          },
-         sportArticles: function() {
-            return commonFunctions.loadSectionArticles('Sport');
+         sportArticles: function(handler, params) {
+            return handler.loadSectionArticles('Sport', params);
          },
-         popularArticles: function() {
-            return commonFunctions.loadSectionArticles('Popular');
+         popularArticles: function(handler, params) {
+            return handler.loadSectionArticles('Popular', params);
          }
       }
    },
    componentDidMount: function () {
-      commonFunctions.hydrateComponentState(this);
+      var params = { frontpageArticleCount: 30 };
+      commonFunctions.hydratePromises(FrontPage, this, params);
    },
 ```
 where our `loadSectionArticles` returns an ES6 `Promise` for an HTTP JSON endpoint, and we hydrate our state as follows:
 ```javascript
 var commonFunctions = {
-   hydrateComponentState: function(component) {
-      var promise = component.statics.hydratePromises;
+   getSectionArticles: function(sectionLabel) {
+      var url = config.publisherBaseUrl + 'section/' + sectionLabel;
+      return netFunctions.getJSON(url);
+   },
+   hydratePromises: function(Component, instance, params) {
+      var promises = Component.hydratePromises;
       log.info('hydrate', Object.keys(promises));
       var state = {};
       function set(key, data) {
-            state[key] = data;
-            if (Object.keys(state).length === Object.keys(promises).length) {
-               log.info('hydrate resolved');
-               component.setState(state);
-            }
+         state[key] = data;
+         if (Object.keys(state).length === Object.keys(promises).length) {
+            log.info('hydrate resolved');
+            instance.setState(state);
+         }
       }
       Object.keys(promises).forEach(key => {
          log.info('hydrate promise', key);
-         log.info('hydrate promise', key, promises[key]().then(function(data) {
+         log.info('hydrate promise', key, promises[key](commonFunctions, params).then(function(data) {
             log.info('hydrate promise resolved', key, data.length || Object.keys(data));
             set(key, data);
          }, function(error) {
@@ -49,7 +54,8 @@ var commonFunctions = {
             set(key, []);
          }));
       });
-   },   
+   }
+}
 ```
 
 ## async map recipe
