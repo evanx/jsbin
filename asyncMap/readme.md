@@ -25,9 +25,7 @@ async.parallel(lodash(array).map(function(item) {
    }
 );
 ```
-
 where `lodash` chaining is used, hence the final `value()`. This enables a `filter` on the array as follows: 
-
 ```javascript
 async.parallel(lodash(array).filter(function(item) {
       return true; // or false to exclude
@@ -37,8 +35,6 @@ async.parallel(lodash(array).filter(function(item) {
 ### Example 
 
 For example, consider we have an `array` of URLs to fetch:
-
-
 ```javascript
 // require async, lodash, request
 
