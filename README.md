@@ -10,10 +10,10 @@ We introduce a mixin and invoke its `hydratePromises` utility function as follow
 
 ```javascript
 var FrontPage = React.createClass({
-   mixins: [ HydratePromisesMixin ],
+   mixins: [ HydrateFromPromisesMixin ],
    componentDidMount: function () {
       log.info('componentDidMount');
-      this.hydratePromises({
+      this.hydrateFromPromises({
          frontpageArticles: function() {
             return httpFunctions.getPromise('/feed/Frontpage');
          },
