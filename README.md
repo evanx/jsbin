@@ -2,7 +2,7 @@
 
 ## React hydrate recipe
 
-https://github.com/evanx/jsbin/blob/master/docs/hydratePromises.md
+https://github.com/evanx/jsbin/blob/master/hydratePromises/hydratePromises.md
 
 ```javascript
 var FrontPage = React.createClass({
@@ -52,7 +52,7 @@ var commonFunctions = {
 
 ## async map recipe
 
-https://github.com/evanx/jsbin/blob/master/docs/asyncMap.md
+https://github.com/evanx/jsbin/blob/master/asyncMap/asyncMap.md
 
 When you have an `array` of items which you want to "map" to tasks, to run in parallel, and finally process the results when all tasks are complete:
 
