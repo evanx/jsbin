@@ -32,9 +32,6 @@ See: https://github.com/evanx/jsbin/blob/master/asyncMap
 
 ### Abstract
 
-When you have an `array` of items which you want to "map" to tasks, to run in parallel, and finally process the results when all tasks are complete:
-
-```javascript
 For example, consider we have an `array` of URLs to fetch:
 
 ```javascript
@@ -52,7 +49,7 @@ async.map(urls, function(url, callback) {
    if (err) {
       console.error('error fetching URLs', err);
    } else {
-      console.error('fetched URLs', results.length);
+      console.info('fetched URLs', results.length);
    }
 });
 ```

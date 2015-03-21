@@ -76,7 +76,7 @@ async.map(urls, function(url, callback) {
    if (err) {
       console.error('error fetching URLs', err);
    } else {
-      console.error('fetched URLs', results.length);
+      console.info('fetched URLs', results.length);
    }
 });
 ```
