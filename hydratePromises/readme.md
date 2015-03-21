@@ -3,7 +3,7 @@
 
 Consider a rather trivial component which fetches data from some endpoints, to render some content. 
 
-Perhaps this is for a prototype, and so we want a "quick and dirty" opininated means of hydrating our state.
+Perhaps this is for a prototype, and so we want a quick opininated means of hydrating our state.
 
 We introduce a mixin for `hydrateFromPromises` which we can use as follows:
 
