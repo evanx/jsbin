@@ -1,9 +1,11 @@
 
 ## React hydrate recipe
 
-PS. These thoughts and efforts inspired by a great talk I attended this week:<br>http://www.meetup.com/nodecpt/events/220703443
+PS. These thoughts and efforts inspired by a great talk I attended this week:
+<br>http://www.meetup.com/nodecpt/events/220703443
 
-And then reading about Relay and GraphQL:<br>https://facebook.github.io/react/blog/2015/02/20/introducing-relay-and-graphql.html
+And then reading about Relay and GraphQL:
+<br>https://facebook.github.io/react/blog/2015/02/20/introducing-relay-and-graphql.html
 
 
 ### Promises
