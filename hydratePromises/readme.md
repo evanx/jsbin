@@ -25,7 +25,7 @@ var FrontPage = React.createClass({
 where `frontpageArticles` and `popularArticles` are to be properties of `state.` For these we specify a function which returns an ES6 `Promise` for the data to be loaded.
 
 In this example, we use an ordinary `getPromise` utility function to perform a cacheable `XMLHttpRequest` and return a `Promise` as follows:
-```
+```javascript
 export function getPromise(url) {
    if (cache[url]) {
       var data = cache[url];
@@ -54,8 +54,8 @@ export function getPromise(url) {
       log.debug('loadJSON', url);
    });
 }
-
 ```
+
 Finally, we hydrate our component state as follows:
 ```javascript
 var HydrateFromPromisesMixin = {
