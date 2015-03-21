@@ -35,26 +35,27 @@ See: https://github.com/evanx/jsbin/blob/master/asyncMap
 When you have an `array` of items which you want to "map" to tasks, to run in parallel, and finally process the results when all tasks are complete:
 
 ```javascript
-async.parallel(lodash(array).map(function(item) { 
-   return function(callback) { // create an async task for item
-      ... // some processing on item
-      someAsync(..., function(err, result) { // some async call for item
-         if (err) {
-            callback(err);
-         } else { // success
-            ... // some processing of result
-            callback(null, result);
-         }
-      });
-   }).value(), function(err, results) {
+For example, consider we have an `array` of URLs to fetch:
+
+```javascript
+async.map(urls, function(url, callback) { 
+   request(url, function(err, response, content) {
       if (err) {
-         // a task failed
+         callback(err);
+      } else if (response.statusCode !== 200) {
+         callback({message: 'HTTP code: ' + response.statusCode});
       } else {
-         // yay, all tasks executed ok
+         callback(null, content);
       }
+   });
+ }, function(err, results) {
+   if (err) {
+      console.error('error fetching URLs', err);
+   } else {
+      console.error('fetched URLs', results.length);
    }
-);
+});
 ```
 
-where `lodash` chaining is used, hence the final `value()`. This enables other methods to be added easily e.g. `filter` <i>et al.</i>
+```
 
