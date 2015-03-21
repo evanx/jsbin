@@ -46,7 +46,7 @@ var HydrateFromPromisesMixin = {
             set(key, data);
          }, function(error) {
             log.debug('hydrate promise rejected', key, error);
-            set(key);
+            set(key, null);
          });
       });
    }
