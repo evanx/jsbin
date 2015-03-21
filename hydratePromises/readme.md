@@ -1,6 +1,8 @@
 
 ## React hydrate recipe
 
+Let's a cue from Relay.
+
 ```javascript
 var FrontPage = React.createClass({
    statics: {
