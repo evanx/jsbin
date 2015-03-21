@@ -56,7 +56,7 @@ export function getPromise(url) {
 }
 ```
 
-Finally, we hydrate our component state as follows:
+Finally, our mixin utility hydrates our component state as follows:
 ```javascript
 var HydrateFromPromisesMixin = {
    hydrateFromPromises: function(promises) {
