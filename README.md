@@ -2,7 +2,7 @@
 
 ## React hydrate recipe
 
-See https://github.com/evanx/jsbin/blob/master/hydratePromises/hydratePromises
+See https://github.com/evanx/jsbin/blob/master/hydratePromises
 
 ### Abstract
 
