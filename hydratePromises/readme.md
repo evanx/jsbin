@@ -14,17 +14,49 @@ var FrontPage = React.createClass({
       log.info('componentDidMount');
       this.hydrateFromPromises({
          frontpageArticles: function() {
-            return httpFunctions.getPromise('/feed/Frontpage');
+            return getPromise('/feed/Frontpage');
          },
          popularArticles: function() {
-            return httpFunctions.getPromise('/feed/Popular');
+            return getPromise('/feed/Popular');
          }
       });
    },
 ```
 where `frontpageArticles` and `popularArticles` are to be properties of `state.` For these we specify a function which returns an ES6 `Promise` for the data to be loaded.
 
-We hydrate our component state as follows:
+In this example, we use an ordinary `getPromise` utility function to perform a cacheable `XMLHttpRequest` and return a `Promise` as follows:
+```
+export function getPromise(url) {
+   if (cache[url]) {
+      var data = cache[url];
+      if (data._time)  {
+         if (new Date().getTime() - data._time < config.cacheExpirySeconds*1000) {
+            return Promise.resolve(data);
+         }
+      } else {
+         return Promise.resolve(data);
+      }
+   }
+   return new Promise((resolve, reject) => {
+      var req = new XMLHttpRequest();
+      req.onload = function () {
+         if (req.status !== 200) {
+            reject({message: 'status ' + req.status});
+         } else {
+            var data = JSON.parse(req.response);
+            data._time = new Date().getTime();
+            cache[url] = data;
+            resolve(data);
+         }
+      };
+      req.open('GET', url);
+      req.send();
+      log.debug('loadJSON', url);
+   });
+}
+
+```
+Finally, we hydrate our component state as follows:
 ```javascript
 var HydrateFromPromisesMixin = {
    hydrateFromPromises: function(promises) {
