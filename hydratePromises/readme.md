@@ -204,21 +204,26 @@ Otherwise we must check for `undefined` state properties in our `render` functio
 where we return `false` if our critical data has not been received, "to indicate that you don't want anything rendered," to quote the <a href="https://facebook.github.io/react/docs/component-specs.html">docs.</a> This is hopefully just the "initial render" of the component, which we abort. However it may that be our `hydrateFromPromises` has concluded with a network error for our critical data, which we can handle in its callback:
 
 ```javascript
-      this.hydrateFromPromises({ // for automatic state hydration
+      var promises = {
          frontpageArticles: function() {
             return getPromise('/feed/Frontpage');
          },
          popularArticles: function() {
             return getPromise('/feed/Popular');
          }
-      }, () => { // called when all promises concluded
+      };
+      this.hydrateFromPromises(promises, () => {
          if (!this.state.frontpageArticles) {
             log.error('missing critical data');
             // TODO
+         } else if (!this.state.popularArticles) {
+            setTimeout(() => {
+               this.hydrateFromPromises({popularArticles: promises.popularArticles});
+            }, 5000);
          }
       });
 ```
-
+where in the above example, we retry `popularArticles` after a 5 delay.
 
 <hr>
 
