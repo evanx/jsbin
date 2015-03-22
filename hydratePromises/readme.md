@@ -119,7 +119,7 @@ var HydrateFromPromisesMixin = {
 
 module.exports = HydrateFromPromisesMixin;
 ```
-where we invoke our promise producers, and only invoke `setState` when all the promises have been resolved.
+where we invoke our promise producers, and only invoke `setState` when all the promises have been resolved (or rejected).
 
 https://twitter.com/evanxsummers
 
