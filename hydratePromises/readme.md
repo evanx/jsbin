@@ -50,7 +50,9 @@ where `frontpageArticles` and `popularArticles` are to be properties of `state.`
 
 Our `state` properties are then automatically hydrated with the JSON reply from the specified endpoints, e.g. `frontpageArticles` is an array returned by the `/feed/Frontpage` NodeJS Express service.
 
-<img src="http://evanx.github.io/images/demo/news.png" border="1"/>
+<hr>
+<img src="http://evanx.github.io/images/demo/news.png"/>
+<hr>
 
 ### Ordinary XMLHttpRequest
 
@@ -169,7 +171,9 @@ We must be cognisant of that in our `render` function, e.g. perform a partial re
 ```
 where we have assumed `popularArticles` is not initialised to an empty array by `getInitialState.`
 
-<img src="http://evanx.github.io/images/demo/popular.png" style="border: solid 1px black"/>
+<hr>
+<img src="http://evanx.github.io/images/demo/popular.png"/>
 
+<hr>
 https://twitter.com/evanxsummers
 
