@@ -242,13 +242,17 @@ where in the above example, we retry `popularArticles` after a 5 second delay.
 Incidently, we can invoke `this.hydrateFromPromises(promises)` again to retry all. Since previously successful responses are cached for 3 minutes by `getPromise,` they wouldn't be refetched.
 
 ```javascript
+      let retryCount = 0;
       let retry = () => {
          log.debug('retry');
          this.hydrateFromPromises(promises, err => {
             if (err) {
-               setTimeout(() => {
-                  retry();
-               }, 5000);
+               retryCount += 1;
+               if (retryCount < 5) {
+                  setTimeout(() => {
+                     retry(); // recursively retry forever
+                  }, 5000);
+               }
             }
          });
       }
