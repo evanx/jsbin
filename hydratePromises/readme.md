@@ -28,7 +28,7 @@ var FrontPage = React.createClass({
    },
    render: function () {
       if (!this.state.frontpageArticles) {
-         log.info('render initial');
+         log.debug('render initial');
          return false;
       } else if (!this.state.popularArticles) {
          log.warn('render partial', this.state.frontpageArticles.length);
