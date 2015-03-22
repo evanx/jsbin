@@ -37,7 +37,7 @@ var FrontPage = React.createClass({
    },
    render: function () {
       if (!this.state.frontpageArticles) {
-         log.debug('render initial');
+         log.debug('initial render, or promise rejected');
          return false;
       } else if (!this.state.popularArticles) {
          log.warn('render partial', this.state.frontpageArticles.length);
@@ -53,7 +53,9 @@ var FrontPage = React.createClass({
 ```
 where `frontpageArticles` and `popularArticles` are to be properties of `state.` For these we specify a function which returns an ES6 `Promise` for the data to be loaded. 
 
-Our `state` properties are then automatically hydrated with the JSON reply from the specified endpoints, e.g. `frontpageArticles` is an array returned by the `/feed/Frontpage` endpoint. That endpoint might be a NodeJS Express service returning JSON data stored in Redis, as is the case for a prototype which renders the following:
+Our `state` properties are then automatically hydrated with the JSON reply from the specified endpoints, e.g. `frontpageArticles` is an array returned by the `/feed/Frontpage` endpoint. 
+
+Incidently, our `/feed/` endpoint might be a NodeJS Express service returning JSON data stored in Redis, as is the case for a prototype which renders the following :)
 
 <hr>
 <img src="http://evanx.github.io/images/demo/news1.png"/>
