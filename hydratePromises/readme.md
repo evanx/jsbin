@@ -146,5 +146,22 @@ However some properties might failed to load e.g. because of a network error. Th
 
 We must be cognisant of that in our `render` function, e.g. perform a partial render of at least what data we do have. 
 
+```javascript
+   render: function () {
+      if (!this.state.frontpageArticles) {
+         log.debug('render initial');
+         return false;
+      } else if (!this.state.popularArticles) {
+         log.warn('render partial', this.state.frontpageArticles.length);
+      } else {
+         log.info('render', this.state.frontpageArticles.length,
+               this.state.popularArticles.length);
+      }
+      return ( // JSX 
+         ... 
+      );
+   }
+```
+
 https://twitter.com/evanxsummers
 
