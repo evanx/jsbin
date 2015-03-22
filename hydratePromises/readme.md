@@ -183,6 +183,8 @@ Otherwise we must check for `undefined` state properties in our `render` functio
          <div className="main">
             <LeadStory article={featuredArticle} sectionLabel="Front page"/>
             ...
+            {this.renderPopularArticles()}
+            ...
       );
    }
 ```
