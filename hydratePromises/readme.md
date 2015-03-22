@@ -51,7 +51,7 @@ where `frontpageArticles` and `popularArticles` are to be properties of `state.`
 Our `state` properties are then automatically hydrated with the JSON reply from the specified endpoints, e.g. `frontpageArticles` is an array returned by the `/feed/Frontpage` NodeJS Express service.
 
 <hr>
-<img src="http://evanx.github.io/images/demo/news.png"/>
+<img src="http://evanx.github.io/images/demo/news1.png"/>
 <hr>
 
 ### Ordinary XMLHttpRequest
