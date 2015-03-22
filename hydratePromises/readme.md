@@ -136,7 +136,7 @@ where we invoke our promise producers, and only invoke `setState` when all the p
 
 We use a `CountDownLatch` utility to count down the replies we are awaiting and then invoke `setState` on our component. That triggers a `render` of our hydrated component. 
 
-However some properties might failed to load and will be `null,` so we have to be cognisant of that in our `render` function.
+However some properties might failed to load and will be `null,` so we have to have that eventuality in our `render` function.
 
 https://twitter.com/evanxsummers
 
