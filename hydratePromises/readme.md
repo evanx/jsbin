@@ -46,7 +46,7 @@ In this example, we use an ordinary `getPromise` utility function to perform a c
 ```javascript
 export function getPromise(url) {
    if (cache[url]) {
-      var data = cache[url];
+      let data = cache[url];
       if (data._time)  {
          if (new Date().getTime() - data._time < config.cacheExpirySeconds*1000) {
             return Promise.resolve(data);
@@ -56,12 +56,12 @@ export function getPromise(url) {
       }
    }
    return new Promise((resolve, reject) => {
-      var req = new XMLHttpRequest();
+      let req = new XMLHttpRequest();
       req.onload = function () {
          if (req.status !== 200) {
             reject({message: 'status ' + req.status});
          } else {
-            var data = JSON.parse(req.response);
+            let data = JSON.parse(req.response);
             data._time = new Date().getTime();
             cache[url] = data;
             resolve(data);
