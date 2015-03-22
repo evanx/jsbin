@@ -8,7 +8,7 @@ This is not a useable project, just some technical articles and snippets on my J
 
 See https://github.com/evanx/jsbin/blob/master/hydratePromises
 
-### Abstract
+#### Abstract
 
 We introduce a mixin and invoke its `hydrateFromPromises` utility function as follows:
 
@@ -33,7 +33,7 @@ var FrontPage = React.createClass({
 
 See: https://github.com/evanx/jsbin/blob/master/asyncMap
 
-### Abstract
+#### Abstract
 
 For example, consider we have an `array` of URLs to fetch:
 
