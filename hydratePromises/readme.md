@@ -144,7 +144,7 @@ We use a `CountDownLatch` utility to count down the replies we are awaiting and 
 
 However some properties might have failed to load e.g. because of a network error. Those will not be set on `state.` 
 
-We might `getInitialState` to initialise `this.state.popularArticles` to an empty array as follows:
+We might use `getInitialState` to initialise `this.state.popularArticles` to an empty array as follows:
 
 ```javascript 
    getInitialState: function () {
