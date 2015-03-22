@@ -166,6 +166,7 @@ We must be cognisant of that in our `render` function, e.g. perform a partial re
       );
    }
 ```
+where we have assumed `popularArticles` is not initialised to an empty array by `getInitialState.`
 
 https://twitter.com/evanxsummers
 
