@@ -151,17 +151,18 @@ We must be cognisant of that in our `render` function, e.g. perform a partial re
 
 ```javascript
    render: function () {
+      let popularArticles = [];
       if (!this.state.frontpageArticles) {
          log.debug('render initial');
          return false;
       } else if (!this.state.popularArticles) {
-         log.warn('render partial', this.state.frontpageArticles.length);
+         log.warn('render popularArticles');
       } else {
-         log.info('render', this.state.frontpageArticles.length,
-               this.state.popularArticles.length);
+         popularArticles = this.state.frontpageArticles;
+         log.info('render', this.state.frontpageArticles.length, popularArticles.length);
       }
       return ( // JSX 
-         ... 
+         ... // 
       );
    }
 ```
