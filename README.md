@@ -26,6 +26,11 @@ var FrontPage = React.createClass({
          popularArticles: function() {
             return httpFunctions.getPromise('/feed/Popular');
          }
+      }, () => {
+         if (!this.state.frontpageArticles) {
+            log.error('missing critical data');
+            // TODO
+         }
       });
    },
 ```
