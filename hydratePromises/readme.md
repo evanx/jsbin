@@ -192,7 +192,7 @@ where we have assumed `popularArticles` is not initialised to an empty array by 
 
 Demo:
 <hr>
-<img src="http://evanx.github.io/images/demo/frontpage.png"/>
+<img src="http://evanx.github.io/images/demo/frontpage1.png"/>
 
 <hr>
 Thanks for reading!
