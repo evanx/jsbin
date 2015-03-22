@@ -232,8 +232,7 @@ where we return `false` if our critical data has not been received, "to indicate
                   } else {
                      // TODO: now what?
                   }
-            });
-               this.hydrateFromPromises({popularArticles: promises.popularArticles});
+              });
             }, 5000);
          }
       });
