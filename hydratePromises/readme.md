@@ -7,7 +7,7 @@ Sure, there's Flux, Relay/GraphQL and what have you.
 
 But as an exercise, how about a concise opininated means of hydrating our component's state?
 
-So we introduce a mixin for `hydrateFromPromises` which we can use as follows:
+So we introduce a mixin for a `hydrateFromPromises` utility function which we can use as follows:
 
 ```javascript
 var FrontPage = React.createClass({
