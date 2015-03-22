@@ -113,15 +113,15 @@ var debug = function() {
 };
 
 function CountDownLatch(counter, then) {
-   this.signal = err => {
+   this.signal = error => {
       if (counter > 0) {
          counter--;
       }
-      if (err) {
-         this.err = err;
+      if (error) {
+         this.error = error;
       }
       if (counter === 0) {
-         then(this.err);
+         then(this.error);
       }
    }
 }
@@ -129,10 +129,10 @@ function CountDownLatch(counter, then) {
 var hydrateFromPromisesMixin = {
    hydrateFromPromises: function(promises, callback) {
       log.debug('hydrate', Object.keys(promises));
-      let countDownLatch = new CountDownLatch(Object.keys(promises).length, err => {
+      let countDownLatch = new CountDownLatch(Object.keys(promises).length, error => {
          this.setState(this.state);
          if (callback) {
-           callback(err); 
+           callback(error); 
          }
       });
       Object.keys(promises).forEach(key => {
