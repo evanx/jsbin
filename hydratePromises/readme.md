@@ -155,7 +155,7 @@ We might use `getInitialState` to initialise `this.state.popularArticles` to an 
 Having said that, `lodash.map` handles `undefined` collections "elegantly," returning an empty array (rather than throwing an exception), which is fine for JSX rendering as follows;
 
 ```javascript
-   renderPopularArticles: function() {
+   renderPopularArticles: function () {
       return lodash.map(this.state.popularArticles, article => {
           return (
              <ArticleCard article={article}/>
