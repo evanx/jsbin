@@ -2,6 +2,17 @@
 var debug = function() {   
 };
 
+function CountDownLatch(counter, then) {
+   this.signal = () => {
+      if (counter > 0) {
+         counter--;
+      }
+      if (counter === 0) {
+         then();
+      }
+   };
+}
+
 var HydrateFromPromisesMixin = {
    hydrateFromPromises: function(promises) {
       debug('hydrate', Object.keys(promises));

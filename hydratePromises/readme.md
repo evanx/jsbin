@@ -100,7 +100,7 @@ var debug = function() {
 };
 
 function CountDownLatch(counter, then) {
-   this.signal = function () {
+   this.signal = () => {
       if (counter > 0) {
          counter--;
       }
