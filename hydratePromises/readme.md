@@ -5,7 +5,7 @@ Consider a rather trivial component which fetches data from some endpoints, to r
 
 Sure, there's Flux, Relay/GraphQL and what have you.
 
-But how about a concise opininated means of hydrating our component's state?
+But as an exercise, how about a concise opininated means of hydrating our component's state?
 
 So we introduce a mixin for `hydrateFromPromises` which we can use as follows:
 
