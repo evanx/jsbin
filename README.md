@@ -6,7 +6,9 @@ This is not a useable project, just some technical articles and snippets on my J
 It's more of a wiki/weblog, with each entry pushed to a github directory.
 
 
-## React hydrate recipe (March 2015)
+# March 2015
+
+## React hydrate recipe
 
 See https://github.com/evanx/jsbin/blob/master/hydratePromises/readme.md
 
@@ -34,7 +36,7 @@ var FrontPage = React.createClass({
 ```
 
 
-## Async map recipe (March 2015)
+## Async map recipe
 
 See: https://github.com/evanx/jsbin/blob/master/asyncMap/readme.md
 
