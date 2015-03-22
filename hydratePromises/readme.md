@@ -1,7 +1,7 @@
 
 ## Hydrating React component state from promises 
 
-Consider a rather trivial component which fetches data from some endpoints, to render some static content. 
+Consider a rather trivial component which fetches data from some endpoints, to render some content. 
 
 Sure, there's Flux, Relay/GraphQL and what have you.
 
