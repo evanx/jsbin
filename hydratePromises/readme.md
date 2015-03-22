@@ -28,6 +28,11 @@ var FrontPage = React.createClass({
          popularArticles: function() {
             return getPromise('/feed/Popular');
          }
+      }, () => {
+         if (!this.state.frontpageArticles) {
+            log.error('missing critical data');
+            // TODO
+         }
       });
    },
    render: function () {
@@ -115,10 +120,11 @@ function CountDownLatch(counter, then) {
 }
 
 var HydrateFromPromisesMixin = {
-   hydrateFromPromises: function(promises) {
+   hydrateFromPromises: function(promises, then) {
       debug('hydrate', Object.keys(promises));
       let countDownLatch = new CountDownLatch(Object.keys(promises).length, () => {
          this.setState(this.state);
+         then(); 
       });
       Object.keys(promises).forEach(key => {
          promises[key]().then(data => {
