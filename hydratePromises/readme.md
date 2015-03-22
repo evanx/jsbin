@@ -30,11 +30,11 @@ var FrontPage = React.createClass({
       if (!this.state.frontpageArticles) {
          log.info('render initial');
          return false;
+      } else if (!this.state.popularArticles) {
+         log.info('render partial', this.state.frontpageArticles.length);
       } else {
-         log.info('render hydrated', this.state.frontpageArticles.length);
-         if (!this.state.popularArticles) {
-            log.warn('render partial');
-         }
+         log.info('render full', this.state.frontpageArticles.length,
+               this.state.popularArticles.length);
       }
       return ( // JSX 
          ... 
