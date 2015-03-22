@@ -230,7 +230,7 @@ where we return `false` if our critical data has not been received, "to indicate
                   if (!err) {
                      log.info('retry ok', this.state.popularArticles.length);
                   } else {
-                     // TODO: now what?
+                     // TODO: recursive retry
                   }
               });
             }, 5000);
