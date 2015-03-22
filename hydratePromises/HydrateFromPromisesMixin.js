@@ -14,11 +14,13 @@ function CountDownLatch(counter, then) {
 }
 
 var hydrateFromPromisesMixin = {
-   hydrateFromPromises: function(promises, then) {
+   hydrateFromPromises: function(promises, callback) {
       log.debug('hydrate', Object.keys(promises));
       let countDownLatch = new CountDownLatch(Object.keys(promises).length, () => {
          this.setState(this.state);
-         then();
+         if (callback) {
+           callback(); 
+         }
       });
       Object.keys(promises).forEach(key => {
          promises[key]().then(data => {
