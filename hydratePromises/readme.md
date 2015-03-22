@@ -164,7 +164,7 @@ Having said that, `lodash.map` handles `undefined` collections "elegantly," retu
    },
 ```
 
-Otherwise we must check for `undefined` state properties in our `render` function, and then perform a partial render of at least what data we do have. 
+Otherwise we must check for `undefined` state properties in our `render` function, and render what data we do have. As seen before: 
 
 ```javascript
    render: function () {
