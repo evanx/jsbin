@@ -1,5 +1,5 @@
 
-# Just Snippets ;)
+# PS Just Snippets ;)
 
 This is not a useable project, just some technical articles and accompanying snippets from my JavaScript adventures. 
 
