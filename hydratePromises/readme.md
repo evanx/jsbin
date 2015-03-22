@@ -245,8 +245,8 @@ Finally bear in mind we can use our promises ordinarily as follows ;)
 
 which illustrates what `hydratePromises` does, but for a collection of promises together.
 
-<hr>
-Demo:
+
+### Demo
 
 <hr>
 <img src="http://evanx.github.io/images/demo/frontpage1.png"/>
