@@ -190,6 +190,10 @@ Otherwise we must check for `undefined` state properties in our `render` functio
 ```
 where we have assumed `popularArticles` is not initialised to an empty array by `getInitialState.`
 
+Demo:
+<hr>
+<img src="http://evanx.github.io/images/demo/frontpage.png"/>
+
 <hr>
 https://twitter.com/evanxsummers
 
