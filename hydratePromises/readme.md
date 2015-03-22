@@ -156,7 +156,7 @@ Finally, we invoke an optional callback.
 
 ### Error handling 
 
-However some properties might have failed to load e.g. because of a network error. Those will not be set on `state.` 
+Some properties might have failed to load e.g. because of a network error. Those will not be set on `state.` 
 
 We might use `getInitialState` to initialise `this.state.popularArticles` to an empty array as follows:
 
