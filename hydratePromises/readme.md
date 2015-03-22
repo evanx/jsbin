@@ -187,7 +187,7 @@ Otherwise we must check for `undefined` state properties in our `render` functio
       );
    }
 ```
-where can return `false` if our critical data has not been received. This cancels the initial render.
+where can return `false` if our critical data has not been received, "to indicate that you don't want anything rendered," to quote the <a href="https://facebook.github.io/react/docs/component-specs.html">docs.</a>
 
 
 <hr>
