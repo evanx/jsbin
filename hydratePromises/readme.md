@@ -168,7 +168,7 @@ Otherwise we must check for `undefined` state properties in our `render` functio
 
 ```javascript
    render: function () {
-      if (!this.state.frontpageArticles) { // critical data
+      if (!this.state.frontpageArticles) { // missing critical data
          log.debug('render initial');
          return false;
       } else if (!this.state.popularArticles) {
