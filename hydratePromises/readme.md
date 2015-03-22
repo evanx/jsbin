@@ -28,7 +28,7 @@ var FrontPage = React.createClass({
          popularArticles: function() {
             return getPromise('/feed/Popular');
          }
-      }, () => {
+      }, () => { // called when all promises concluded
          if (!this.state.frontpageArticles) {
             log.error('missing critical data');
             // TODO
