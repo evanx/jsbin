@@ -55,6 +55,8 @@ where `frontpageArticles` and `popularArticles` are to be properties of `state.`
 
 Our `state` properties are then automatically hydrated with the JSON reply from the specified endpoints, e.g. `frontpageArticles` is an array returned by the `/feed/Frontpage` endpoint. 
 
+Finally, our optional callback is invoked once all promises have concluded, and here we might do some special error handling.
+
 Incidently, our `/feed/` endpoint might be a NodeJS Express service returning JSON data stored in Redis, as is the case for a prototype which renders the following :)
 
 <hr>
