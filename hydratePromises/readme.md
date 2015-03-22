@@ -164,16 +164,15 @@ Having said that, `lodash.map` handles `undefined` collections "elegantly," retu
    },
 ```
 
-Otherwise we must check for `undefined` state properties in our `render` function, and render what data we do have. As seen before: 
+Otherwise we must check for `undefined` state properties in our `render` function:
 
 ```javascript
    render: function () {
-      let popularArticles = [];
-      if (!this.state.frontpageArticles) {
+      if (!this.state.frontpageArticles) { // critical data
          log.debug('render initial');
          return false;
       } else if (!this.state.popularArticles) {
-         log.warn('render popularArticles');
+         log.error('render popularArticles');
       } else {
          popularArticles = this.state.frontpageArticles;
          log.info('render', this.state.frontpageArticles.length, popularArticles.length);
@@ -188,7 +187,10 @@ Otherwise we must check for `undefined` state properties in our `render` functio
       );
    }
 ```
-where we have assumed `popularArticles` is not initialised to an empty array by `getInitialState.`
+where can return `false` if our critical data has not been received. This cancels the initial render.
+
+
+<hr>
 
 Demo:
 
