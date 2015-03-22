@@ -136,7 +136,7 @@ where we invoke our promise producers, and only invoke `setState` when all the p
 
 We use a `CountDownLatch` utility to count down the replies we are awaiting and then invoke `setState` on our component. That triggers a `render` of our hydrated component. 
 
-However some properties might failed to load e.g. because of a network error. Those will not be set on `state` and will be `undefined` if not set via `getInitialState` e.g. to an empty array. We must be cognisant of that in our `render` function, e.g. perform a partial render of at least what data we do have. 
+However some properties might failed to load e.g. because of a network error. Those will not be set on `state` and so will be `undefined` i.e. if not set via `getInitialState` e.g. to an empty array. We must be cognisant of that in our `render` function, e.g. perform a partial render of at least what data we do have. 
 
 https://twitter.com/evanxsummers
 
