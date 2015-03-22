@@ -12,6 +12,9 @@ So we introduce a mixin for `hydrateFromPromises` which we can use as follows:
 ```javascript
 var FrontPage = React.createClass({
    mixins: [ HydrateFromPromisesMixin ],
+   getInitialState: function () {
+      return {};
+   },   
    componentDidMount: function () {
       log.info('componentDidMount');
       this.hydrateFromPromises({
@@ -23,6 +26,18 @@ var FrontPage = React.createClass({
          }
       });
    },
+   render: function () {
+      if (!this.state.frontpageArticles) {
+         log.info('render initial');
+         return false;
+      } else {
+         log.info('render hydrated', this.state.frontpageArticles.length, this.state.popularArticles.length);
+      }
+      return (
+         ... // JSX 
+      );
+   }
+});
 ```
 where `frontpageArticles` and `popularArticles` are to be properties of `state.` For these we specify a function which returns an ES6 `Promise` for the data to be loaded.
 
