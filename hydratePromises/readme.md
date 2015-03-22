@@ -191,8 +191,11 @@ Otherwise we must check for `undefined` state properties in our `render` functio
 where we have assumed `popularArticles` is not initialised to an empty array by `getInitialState.`
 
 Demo:
+
 <hr>
 <img src="http://evanx.github.io/images/demo/frontpage1.png"/>
+
+where we are using Webpack to transpile, bundle and deliver our ES6/JSX and CSS/Sass resources to the browser, and `webpack-dev-server` to enjoy auto reloading thereof :)
 
 <hr>
 Thanks for reading!
