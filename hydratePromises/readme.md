@@ -35,9 +35,7 @@ var FrontPage = React.createClass({
             this.state.popularArticles.length);
       }
       return (
-         <div>
-            ... // JSX 
-         </div>
+         ... // JSX 
       );
    }
 });
