@@ -178,8 +178,11 @@ Otherwise we must check for `undefined` state properties in our `render` functio
          popularArticles = this.state.frontpageArticles;
          log.info('render', this.state.frontpageArticles.length, popularArticles.length);
       }
+      var featuredArticle = this.state.frontpageArticles[0];
       return ( // JSX 
-         ... // 
+         <div className="main">
+            <LeadStory article={featuredArticle} sectionLabel="Front page"/>
+            ...
       );
    }
 ```
