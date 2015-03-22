@@ -44,6 +44,12 @@ where `frontpageArticles` and `popularArticles` are to be properties of `state.`
 
 In this example, we use an ordinary `getPromise` utility function to perform a cacheable `XMLHttpRequest` and return a `Promise` as follows:
 ```javascript
+var config = {
+   cacheExpirySeconds: 180
+};
+
+var cache = {};
+
 export function getPromise(url) {
    if (cache[url]) {
       let data = cache[url];
