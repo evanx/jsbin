@@ -19,10 +19,10 @@ var FrontPage = React.createClass({
       log.info('componentDidMount');
       this.hydrateFromPromises({
          frontpageArticles: function() {
-            return getPromise('/feed/Frontpage');
+            return getPromise('/articles/Frontpage');
          },
          popularArticles: function() {
-            return getPromise('/feed/Popular');
+            return getPromise('/articles/Popular');
          }
       });
    },
