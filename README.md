@@ -6,11 +6,9 @@ This is not a useable project, just some technical articles and snippets on my J
 It's more of a wiki/weblog, with each entry pushed to a github directory.
 
 
-## React hydrate recipe
+## React hydrate recipe (March 2015)
 
 See https://github.com/evanx/jsbin/blob/master/hydratePromises/readme.md
-
-#### Abstract
 
 We introduce a mixin and invoke its `hydrateFromPromises` utility function as follows:
 
@@ -36,11 +34,9 @@ var FrontPage = React.createClass({
 ```
 
 
-## Async map recipe
+## Async map recipe (March 2015)
 
 See: https://github.com/evanx/jsbin/blob/master/asyncMap/readme.md
-
-#### Abstract
 
 For example, consider we have an `array` of URLs to fetch:
 
