@@ -1,8 +1,6 @@
 
 
-This is repo not a useable project, just some technical notes and accompanying snippets from my JavaScript adventures. 
-
-It's more of a weblog, with each entry pushed to a github directory.
+This repo is not a useable project - it's more of a wiki/weblog, with each entry pushed to a github directory.
 
 So without further ado...
 
