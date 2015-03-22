@@ -23,7 +23,7 @@ var FrontPage = React.createClass({
    },   
    componentDidMount: function () {
       log.info('componentDidMount');
-      this.hydrateFromPromises({ // the automation happens here
+      this.hydrateFromPromises({ // for automatic state hydration
          frontpageArticles: function() {
             return getPromise('/feed/Frontpage');
          },
