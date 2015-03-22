@@ -31,7 +31,8 @@ var FrontPage = React.createClass({
          log.info('render initial');
          return false;
       } else {
-         log.info('render hydrated', this.state.frontpageArticles.length, this.state.popularArticles.length);
+         log.info('render hydrated', this.state.frontpageArticles.length, 
+            this.state.popularArticles.length);
       }
       return (
          ... // JSX 
