@@ -40,9 +40,9 @@ var FrontPage = React.createClass({
          log.debug('initial render, or promise rejected');
          return false;
       } else if (!this.state.popularArticles) {
-         log.warn('render partial', this.state.frontpageArticles.length);
+         log.warn('partially hydrated', this.state.frontpageArticles.length);
       } else {
-         log.info('render', this.state.frontpageArticles.length,
+         log.info('fully hydrated', this.state.frontpageArticles.length,
                this.state.popularArticles.length);
       }
       return ( // JSX 
