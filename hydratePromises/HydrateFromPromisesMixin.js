@@ -3,23 +3,26 @@ var debug = function() {
 };
 
 function CountDownLatch(counter, then) {
-   this.signal = () => {
+   this.signal = err => {
       if (counter > 0) {
          counter--;
       }
-      if (counter === 0) {
-         then();
+      if (err) {
+         this.err = err;
       }
-   };
+      if (counter === 0) {
+         then(this.err);
+      }
+   }
 }
 
 var hydrateFromPromisesMixin = {
    hydrateFromPromises: function(promises, callback) {
       log.debug('hydrate', Object.keys(promises));
-      let countDownLatch = new CountDownLatch(Object.keys(promises).length, () => {
+      let countDownLatch = new CountDownLatch(Object.keys(promises).length, err => {
          this.setState(this.state);
          if (callback) {
-           callback(); 
+           callback(err); 
          }
       });
       Object.keys(promises).forEach(key => {
@@ -30,11 +33,11 @@ var hydrateFromPromisesMixin = {
                countDownLatch.signal();
             }, error => {
                log.debug('hydrate promise rejected', key, error);
-               countDownLatch.signal();
+               countDownLatch.signal(error);
             });
          } catch (error) {
             log.debug('hydrate promise exception', key, error);
-            countDownLatch.signal();                        
+            countDownLatch.signal(error);  
          }
       });
    }
