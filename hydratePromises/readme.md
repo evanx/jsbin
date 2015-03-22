@@ -223,7 +223,7 @@ where we return `false` if our critical data has not been received, "to indicate
          }
       });
 ```
-where in the above example, we retry `popularArticles` after a 5 delay.
+where in the above example, we retry `popularArticles` after a 5 second delay.
 
 <hr>
 
