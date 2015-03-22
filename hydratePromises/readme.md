@@ -244,7 +244,7 @@ Incidently, we can invoke `this.hydrateFromPromises(promises)` again to retry al
 ```javascript
       this.hydrateFromPromises(promises, err => {
          if (err) {
-            this.hydrateFromPromises(promises)
+            this.hydrateFromPromises(promises);
          }
       });
 ```
