@@ -13,19 +13,20 @@ function CountDownLatch(counter, then) {
    };
 }
 
-var HydrateFromPromisesMixin = {
-   hydrateFromPromises: function(promises) {
-      debug('hydrate', Object.keys(promises));
+var hydrateFromPromisesMixin = {
+   hydrateFromPromises: function(promises, then) {
+      log.debug('hydrate', Object.keys(promises));
       let countDownLatch = new CountDownLatch(Object.keys(promises).length, () => {
          this.setState(this.state);
+         then();
       });
       Object.keys(promises).forEach(key => {
          promises[key]().then(data => {
-            debug('hydrate promise resolved', key);
+            log.debug('hydrate promise resolved', key);
             this.state[key] = data;
             countDownLatch.signal();
          }, error => {
-            debug('hydrate promise rejected', key, error);
+            log.debug('hydrate promise rejected', key, error);
             countDownLatch.signal();
          });
       });
