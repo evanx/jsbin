@@ -1,8 +1,6 @@
 
 
-This repo is not a useable project - it's more of a wiki/weblog, with each entry pushed to a github directory.
-
-So without further ado...
+<i>This repo is not a useable project - it's more of a wiki/weblog, with each entry pushed to a github directory.</i>
 
 
 ## Tech Note: Hydrating React component state from promises 
