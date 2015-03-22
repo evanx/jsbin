@@ -90,6 +90,7 @@ export function getPromise(url) {
    });
 }
 ```
+where we cache replies for 3 minutes to avoid refetching.
 
 
 ### Magic mixin sauce
@@ -132,6 +133,10 @@ var HydrateFromPromisesMixin = {
 module.exports = HydrateFromPromisesMixin;
 ```
 where we invoke our promise producers, and only invoke `setState` when all the promises have been concluded.
+
+We use a `CountDownLatch` utility to count down the replies we are awaiting and then invoke `setState` on our component. That triggers a `render` of our hydrated component. 
+
+However some properties might failed to load and will be `null,` so we have to be cognisant of that on our `render` function.
 
 https://twitter.com/evanxsummers
 
