@@ -188,6 +188,7 @@ Otherwise we must check for `undefined` state properties in our `render` functio
       );
    }
 ```
+<hr>
 where we have assumed `popularArticles` is not initialised to an empty array by `getInitialState.`
 
 Demo:
