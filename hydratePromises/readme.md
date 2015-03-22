@@ -114,7 +114,7 @@ var HydrateFromPromisesMixin = {
    hydrateFromPromises: function(promises) {
       debug('hydrate', Object.keys(promises));
       let countDownLatch = new CountDownLatch(Object.keys(promises).length, () => {
-         this.setState(that.state);
+         this.setState(this.state);
       });
       Object.keys(promises).forEach(key => {
          promises[key]().then(data => {
