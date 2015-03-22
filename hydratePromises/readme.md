@@ -5,7 +5,7 @@ This repo is not a useable project - it's more of a wiki/weblog, with each entry
 So without further ado...
 
 
-## TechNote: Hydrating React component state from promises 
+## Tech Note: Hydrating React component state from promises 
 
 Consider a rather trivial component which fetches data from some endpoints, to render some content. 
 
