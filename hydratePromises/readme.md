@@ -50,6 +50,9 @@ var FrontPage = React.createClass({
 ```
 where `frontpageArticles` and `popularArticles` are to be properties of `state.` For these we specify a function which returns an ES6 `Promise` for the data to be loaded.
 
+
+### Ordinary XMLHttpRequest
+
 In this example, we use an ordinary `getPromise` utility function to perform a cacheable `XMLHttpRequest` and return a `Promise` as follows:
 ```javascript
 var config = {
@@ -87,6 +90,9 @@ export function getPromise(url) {
    });
 }
 ```
+
+
+### Magic mixin sauce
 
 Finally, the "magic sauce" is our mixin utility which hydrates our component state as follows:
 ```javascript
