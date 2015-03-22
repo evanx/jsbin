@@ -34,8 +34,8 @@ var FrontPage = React.createClass({
          log.info('render hydrated', this.state.frontpageArticles.length, 
             this.state.popularArticles.length);
       }
-      return (
-         ... // JSX 
+      return ( // JSX 
+         ... 
       );
    }
 });
