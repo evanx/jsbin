@@ -215,7 +215,7 @@ where we return `false` if our critical data has not been received, "to indicate
       this.hydrateFromPromises(promises, () => {
          if (!this.state.frontpageArticles) {
             log.error('missing critical data');
-            // TODO
+            // TODO redirect
          } else if (!this.state.popularArticles) {
             setTimeout(() => {
                this.hydrateFromPromises({popularArticles: promises.popularArticles});
