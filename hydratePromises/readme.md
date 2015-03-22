@@ -172,8 +172,5 @@ We must be cognisant of that in our `render` function, e.g. perform a partial re
 where we have assumed `popularArticles` is not initialised to an empty array by `getInitialState.`
 
 <hr>
-<img src="http://evanx.github.io/images/demo/popular.png"/>
-
-<hr>
 https://twitter.com/evanxsummers
 
