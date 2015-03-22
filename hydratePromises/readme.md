@@ -37,7 +37,7 @@ var FrontPage = React.createClass({
    },
    render: function () {
       if (!this.state.frontpageArticles) {
-         log.debug('initial render, or promise rejected');
+         log.debug('initial render, or its promise rejected');
          return false;
       } else if (!this.state.popularArticles) {
          log.warn('partially hydrated', this.state.frontpageArticles.length);
@@ -183,7 +183,7 @@ Otherwise we must check for `undefined` state properties in our `render` functio
 ```javascript
    render: function () {
       if (!this.state.frontpageArticles) { // missing critical data
-         log.debug('initial render, or promise rejected');
+         log.debug('initial render, or its promise rejected');
          return false;
       } else if (!this.state.popularArticles) {
          log.warn('partially hydrated', this.state.frontpageArticles.length);
