@@ -8,7 +8,7 @@ It's more of a weblog, with each entry pushed to a github directory.
 
 ## React hydrate recipe
 
-See https://github.com/evanx/jsbin/blob/master/hydratePromises
+See https://github.com/evanx/jsbin/blob/master/hydratePromises/readme.md
 
 #### Abstract
 
@@ -33,7 +33,7 @@ var FrontPage = React.createClass({
 
 ## Async map recipe
 
-See: https://github.com/evanx/jsbin/blob/master/asyncMap
+See: https://github.com/evanx/jsbin/blob/master/asyncMap/readme.md
 
 #### Abstract
 
