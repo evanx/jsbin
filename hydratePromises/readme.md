@@ -82,27 +82,34 @@ export function getPromise(url) {
 
 Finally, our mixin utility hydrates our component state as follows:
 ```javascript
+var debug = function() {   
+};
+
+function CountDownLatch(counter, then) {
+   this.signal = function () {
+      if (counter > 0) {
+         counter--;
+      }
+      if (counter === 0) {
+         then();
+      }
+   };
+}
+
 var HydrateFromPromisesMixin = {
    hydrateFromPromises: function(promises) {
-      log.debug('hydrate', Object.keys(promises));
-      let that = this;
-      let count = 0;
-      function set(key, data) {
-         that.state[key] = data;
-         count += 1;
-         if (count === Object.keys(promises).length) {
-            log.debug('hydrate resolved');
-            that.setState(that.state);
-         }
-      }
+      debug('hydrate', Object.keys(promises));
+      let countDownLatch = new CountDownLatch(Object.keys(promises).length, () => {
+         this.setState(that.state);
+      });
       Object.keys(promises).forEach(key => {
-         log.info('hydrate promise', key);
          promises[key]().then(data => {
-            log.debug('hydrate promise resolved', key);
-            set(key, data);
+            debug('hydrate promise resolved', key);
+            this.state[key] = data;
+            countDownLatch.signal();
          }, function(error) {
-            log.debug('hydrate promise rejected', key, error);
-            set(key, null);
+            debug('hydrate promise rejected', key, error);
+            countDownLatch.signal();
          });
       });
    }
