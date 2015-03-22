@@ -225,7 +225,7 @@ where we return `false` if our critical data has not been received, "to indicate
 ```
 where in the above example, we retry `popularArticles` after a 5 second delay. 
 
-Incidently, we can invoke `this.hydrateFromPromises(promises)` again to retry all. Since previously successful responses are cached for 3 minutes, they wouldn't be refetched.
+Incidently, we can invoke `this.hydrateFromPromises(promises)` again to retry all. Since previously successful responses are cached for 3 minutes by `getPromise,` they wouldn't be refetched.
 
 <hr>
 
