@@ -8,7 +8,6 @@ It's more of a weblog, with each entry pushed to a github directory.
 So without further ado...
 
 
-
 ## Hydrating React component state from promises 
 
 Consider a rather trivial component which fetches data from some endpoints, to render some content. 
