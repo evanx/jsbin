@@ -142,7 +142,7 @@ We use a `CountDownLatch` utility to count down the replies we are awaiting and 
 
 ### Error handling 
 
-However some properties might have failed to load e.g. because of a network error. Those will not be set on `state` and so will be `undefined` i.e. if not set via `getInitialState` e.g. to an empty array as follows:
+However some properties might have failed to load e.g. because of a network error. Those will not be set on `state.` So we might `getInitialState` e.g. initialise the `popularArticles` property to an empty array as follows:
 
 ```javascript 
    getInitialState: function () {
@@ -150,7 +150,19 @@ However some properties might have failed to load e.g. because of a network erro
    },   
 ```
 
-We must be cognisant of that in our `render` function, e.g. perform a partial render of at least what data we do have. 
+Having said that, `lodash.map` handles `undefined` collections "elegantly," returning an empty array (rather than throwing an exception), which is fine for JSX rendering as follows;
+
+```javascript
+   renderPopularArticles: function() {
+      return lodash.map(this.state.popularArticles, article => {
+          return (
+             <ArticleCard article={article}/>
+          );
+      }).value();
+   },
+```
+
+Otherwise we must check for `undefined` state properties in our `render` function, and then perform a partial render of at least what data we do have. 
 
 ```javascript
    render: function () {
