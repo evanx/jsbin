@@ -195,5 +195,7 @@ Demo:
 <img src="http://evanx.github.io/images/demo/frontpage.png"/>
 
 <hr>
+Thanks for reading!
+
 https://twitter.com/evanxsummers
 
