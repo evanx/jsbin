@@ -113,23 +113,26 @@ var debug = function() {
 };
 
 function CountDownLatch(counter, then) {
-   this.signal = () => {
+   this.signal = err => {
       if (counter > 0) {
          counter--;
       }
-      if (counter === 0) {
-         then();
+      if (err) {
+         this.err = err;
       }
-   };
+      if (counter === 0) {
+         then(this.err);
+      }
+   }
 }
 
-var HydrateFromPromisesMixin = {
+var hydrateFromPromisesMixin = {
    hydrateFromPromises: function(promises, callback) {
-      debug('hydrate', Object.keys(promises));
-      let countDownLatch = new CountDownLatch(Object.keys(promises).length, () => {
+      log.debug('hydrate', Object.keys(promises));
+      let countDownLatch = new CountDownLatch(Object.keys(promises).length, err => {
          this.setState(this.state);
          if (callback) {
-           callback(); 
+           callback(err); 
          }
       });
       Object.keys(promises).forEach(key => {
@@ -140,11 +143,11 @@ var HydrateFromPromisesMixin = {
                countDownLatch.signal();
             }, error => {
                log.debug('hydrate promise rejected', key, error);
-               countDownLatch.signal();
+               countDownLatch.signal(error);
             });
          } catch (error) {
             log.debug('hydrate promise exception', key, error);
-            countDownLatch.signal();                        
+            countDownLatch.signal(error);  
          }
       });
    }
@@ -217,12 +220,19 @@ where we return `false` if our critical data has not been received, "to indicate
             return getPromise('/feed/Popular');
          }
       };
-      this.hydrateFromPromises(promises, () => {
+      this.hydrateFromPromises(promises, err => {
          if (!this.state.frontpageArticles) {
             log.error('missing critical data');
             // TODO redirect
          } else if (!this.state.popularArticles) {
             setTimeout(() => {
+               this.hydrateFromPromises({popularArticles: promises.popularArticles}, err => {
+                  if (!err) {
+                     log.info('retry ok', this.state.popularArticles.length);
+                  } else {
+                     // TODO: now what?
+                  }
+            });
                this.hydrateFromPromises({popularArticles: promises.popularArticles});
             }, 5000);
          }
@@ -231,6 +241,14 @@ where we return `false` if our critical data has not been received, "to indicate
 where in the above example, we retry `popularArticles` after a 5 second delay. 
 
 Incidently, we can invoke `this.hydrateFromPromises(promises)` again to retry all. Since previously successful responses are cached for 3 minutes by `getPromise,` they wouldn't be refetched.
+
+```javascript
+      this.hydrateFromPromises(promises, err => {
+         if (err) {
+            this.hydrateFromPromises(promises)
+         }
+      });
+```
 
 Finally bear in mind we can use our promises ordinarily as follows ;)
 ```javascript
