@@ -193,7 +193,7 @@ Otherwise we must check for `undefined` state properties in our `render` functio
       );
    }
 ```
-where we return `false` if our critical data has not been received, "to indicate that you don't want anything rendered," to quote the <a href="https://facebook.github.io/react/docs/component-specs.html">docs.</a> This is hopefully just the "initial render" of the component, which we abort. However it may that be our `hydratePromises` has concluded with a network error for our critical data. So our prototype needs some work to handle such an error.
+where we return `false` if our critical data has not been received, "to indicate that you don't want anything rendered," to quote the <a href="https://facebook.github.io/react/docs/component-specs.html">docs.</a> This is hopefully just the "initial render" of the component, which we abort. However it may that be our `hydratePromises` has concluded with a network error for our critical data, which we handle in the `hydrateFromPromises` callback.
 
 
 <hr>
