@@ -3,7 +3,7 @@
 
 This is not a useable project, just some technical articles and snippets on my JavaScript adventures.
 
-It's more of a weblog, with each entry pushed to a github directory.
+It's more of a wiki/weblog, with each entry pushed to a github directory.
 
 
 ## React hydrate recipe
