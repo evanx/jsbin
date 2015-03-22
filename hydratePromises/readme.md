@@ -243,9 +243,9 @@ Finally bear in mind we can use our promises ordinarily as follows ;)
             });
 ```
 
-<hr>
 which illustrates what `hydratePromises` does, but for a collection of promises together.
 
+<hr>
 Demo:
 
 <hr>
