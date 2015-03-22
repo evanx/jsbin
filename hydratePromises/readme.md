@@ -48,7 +48,7 @@ var FrontPage = React.createClass({
 ```
 where `frontpageArticles` and `popularArticles` are to be properties of `state.` For these we specify a function which returns an ES6 `Promise` for the data to be loaded. 
 
-Our `state` properties are then automatically hydrated with the JSON reply from the specified endpoints, e.g. `frontpageArticles` is an array returned by the `/feed/Frontpage` endpoint e.g. a NodeJS Express service returning JSON data stored in Redis.
+Our `state` properties are then automatically hydrated with the JSON reply from the specified endpoints, e.g. `frontpageArticles` is an array returned by the `/feed/Frontpage` endpoint e.g. a NodeJS Express service returning JSON data stored in Redis, as is the case for a demo which renders the following:
 
 <hr>
 <img src="http://evanx.github.io/images/demo/news1.png"/>
