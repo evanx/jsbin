@@ -107,7 +107,7 @@ var HydrateFromPromisesMixin = {
             debug('hydrate promise resolved', key);
             this.state[key] = data;
             countDownLatch.signal();
-         }, function(error) {
+         }, error => {
             debug('hydrate promise rejected', key, error);
             countDownLatch.signal();
          });
