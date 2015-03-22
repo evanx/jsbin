@@ -1,11 +1,11 @@
 
 ## Hydrating React component state from promises 
 
-Consider a rather trivial component which fetches data from some endpoints, to render some content. 
+Consider a rather trivial component which fetches data from some endpoints, to render some static content. 
 
 Sure, there's Flux, Relay/GraphQL and what have you.
 
-But perhaps this is for a prototype, and we want a "quick and dirty" opininated means of hydrating our state.
+But perhaps this is for a prototype, and we want a "quick and dirty" opininated means of hydrating our component's state.
 
 So we introduce a mixin for `hydrateFromPromises` which we can use as follows:
 
