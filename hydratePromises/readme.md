@@ -183,13 +183,13 @@ Otherwise we must check for `undefined` state properties in our `render` functio
 ```javascript
    render: function () {
       if (!this.state.frontpageArticles) { // missing critical data
-         log.debug('render initial');
+         log.debug('initial render, or promise rejected');
          return false;
       } else if (!this.state.popularArticles) {
-         log.error('render popularArticles');
+         log.warn('partially hydrated', this.state.frontpageArticles.length);
       } else {
-         popularArticles = this.state.frontpageArticles;
-         log.info('render', this.state.frontpageArticles.length, popularArticles.length);
+         log.info('fully hydrated', this.state.frontpageArticles.length,
+               this.state.popularArticles.length);
       }
       var featuredArticle = this.state.frontpageArticles[0];
       return (
