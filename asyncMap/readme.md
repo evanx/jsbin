@@ -48,12 +48,12 @@ Otherwise, using `async.map` is more concise:
             callback(null, result);
          }
       });
-    }, function(err, results) {
+   }, function(err, results) {
       if (err) {
          // a task failed
       } else {
         // yay, all tasks executed ok
-     }
+      }
    });
 ```
 
