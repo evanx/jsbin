@@ -133,14 +133,19 @@ var HydrateFromPromisesMixin = {
          }
       });
       Object.keys(promises).forEach(key => {
-         promises[key]().then(data => {
-            debug('hydrate promise resolved', key);
-            this.state[key] = data;
-            countDownLatch.signal();
-         }, error => {
-            debug('hydrate promise rejected', key, error);
-            countDownLatch.signal();
-         });
+         try {
+            promises[key]().then(data => {
+               log.debug('hydrate promise resolved', key);
+               this.state[key] = data;
+               countDownLatch.signal();
+            }, error => {
+               log.debug('hydrate promise rejected', key, error);
+               countDownLatch.signal();
+            });
+         } catch (error) {
+            log.debug('hydrate promise exception', key, error);
+            countDownLatch.signal();                        
+         }
       });
    }
 };
@@ -234,7 +239,7 @@ Finally bear in mind we can use our promises ordinarily as follows ;)
                this.state.popularArticles = data;
                this.setState(this.state);
             }, error => {
-               log.warn('retry failed');
+               log.warn('retry failed', error);
             });
 ```
 
