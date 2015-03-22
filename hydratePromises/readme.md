@@ -124,12 +124,12 @@ function CountDownLatch(counter, then) {
 }
 
 var HydrateFromPromisesMixin = {
-   hydrateFromPromises: function(promises, then) {
+   hydrateFromPromises: function(promises, callback) {
       debug('hydrate', Object.keys(promises));
       let countDownLatch = new CountDownLatch(Object.keys(promises).length, () => {
          this.setState(this.state);
-         if (then) {
-           then(); 
+         if (callback) {
+           callback(); 
          }
       });
       Object.keys(promises).forEach(key => {
@@ -150,6 +150,8 @@ module.exports = HydrateFromPromisesMixin;
 where we invoke our promise producers, and only invoke `setState` when all the promises have been concluded.
 
 We use a `CountDownLatch` utility to count down the replies we are awaiting and then invoke `setState` on our component. That triggers a `render` of our hydrated component. 
+
+Finally, we invoke an ooptional callback.
 
 
 ### Error handling 
