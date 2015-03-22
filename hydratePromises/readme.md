@@ -160,7 +160,7 @@ Having said that, `lodash.map` handles `undefined` collections "elegantly," retu
           return (
              <ArticleCard article={article}/>
           );
-      }).value();
+      });
    },
 ```
 
