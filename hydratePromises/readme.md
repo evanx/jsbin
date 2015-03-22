@@ -23,7 +23,7 @@ var FrontPage = React.createClass({
    },   
    componentDidMount: function () {
       log.info('componentDidMount');
-      this.hydrateFromPromises({
+      this.hydrateFromPromises({ // the automation happens here
          frontpageArticles: function() {
             return getPromise('/feed/Frontpage');
          },
@@ -88,7 +88,7 @@ export function getPromise(url) {
 }
 ```
 
-Finally, our mixin utility hydrates our component state as follows:
+Finally, the "magic sauce" is our mixin utility which hydrates our component state as follows:
 ```javascript
 var debug = function() {   
 };
