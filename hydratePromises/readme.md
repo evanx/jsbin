@@ -139,7 +139,7 @@ export function requestPromise(url) {
       });
    });
 ```
-Our dependencies are resolved and bundled by Webpack, which also performs ES6/JSX transpilation (using `babel`), for delivery to the browser.
+Our dependencies are resolved and bundled by Webpack, which also performs ES6/JSX transpilation (using "babel"), for delivery to the browser.
 
 
 ### Magic mixin sauce
