@@ -3,7 +3,7 @@
 <i>This repo is not a project - it's more of a wiki/weblog, with each entry pushed to a github directory :)</i>
 
 
-### First steps with ReactJS and ES6<br>Hydrating component state from promises 
+### First steps with ReactJS and ES6:<br>&nbsp;&nbsp;&nbsp;Hydrating component state from promises 
 
 Consider a rather trivial component which fetches data from some endpoints, to render some content. 
 
