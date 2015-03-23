@@ -139,7 +139,7 @@ export function requestPromise(url) {
       });
    });
 ```
-where our dependencies are resolved and bundled by Webpack, which also performs ES6/JSX transpilation (using "babel"), for delivery to the browser.
+where our dependencies are resolved and bundled by Webpack, which also performs ES6/JSX transpilation (using <a href="http://babeljs.io/blog/2015/02/23/babel-loves-react">babel</a>), for delivery to the browser.
 
 
 ### Magic mixin sauce
