@@ -106,7 +106,7 @@ export function getPromise(url) {
 where we cache replies for 3 minutes to avoid refetching.
 
 
-### request 
+### Browser request package
 
 Alternatively, we use the npm `browser-request` package as follows:
 
