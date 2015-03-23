@@ -314,7 +314,7 @@ which illustrates what `hydratePromises` does, but for a collection of promises.
 <hr>
 <img src="http://evanx.github.io/images/demo/frontpage1.png"/>
 <hr>
-where incidently we are using Webpack to transpile, "browserify" bundle and deliver our ES6/JSX (and CSS/Sass) resources to the browser, and `webpack-dev-server` to enjoy auto reloading thereof :)
+where incidently we are using Webpack to transpile, "browserify," bundle and deliver our ES6/JSX (and CSS/Sass) resources to the browser, and `webpack-dev-server` to enjoy auto reloading thereof :)
 
 <hr>
 Thanks for reading!
