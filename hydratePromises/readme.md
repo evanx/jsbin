@@ -250,7 +250,7 @@ Incidently, we can invoke `this.hydrateFromPromises(promises)` again to retry al
                retryCount += 1;
                if (retryCount < 5) {
                   setTimeout(() => {
-                     retry(); // recursively retry forever
+                     retry(); // recursively retry
                   }, 5000);
                }
             }
