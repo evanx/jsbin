@@ -63,6 +63,7 @@ Incidently, our `/feed/` endpoint might be a NodeJS Express service returning JS
 <img src="http://evanx.github.io/images/demo/news1.png"/>
 <hr>
 
+
 ### Ordinary XMLHttpRequest
 
 In this example, we use an ordinary `getPromise` utility function to perform a cacheable `XMLHttpRequest` and return a `Promise` as follows:
@@ -103,6 +104,42 @@ export function getPromise(url) {
 }
 ```
 where we cache replies for 3 minutes to avoid refetching.
+
+
+### request 
+
+Alternatively, we use the npm `browser-request` package as follows:
+
+```javascript 
+var request = require('browser-request');
+
+export function requestPromise(url) {
+   if (cache[url]) {
+      let data = cache[url];
+      if (data._time)  {
+         if (new Date().getTime() - data._time < config.cacheExpirySeconds*1000) {
+            return Promise.resolve(data);
+         }
+      } else {
+         return Promise.resolve(data);
+      }
+   }
+   return new Promise((resolve, reject) => {
+      request(url, function(err, response, content) {
+         if (err) {
+            reject(err);
+         } else if (response.statusCode !== 200) {
+            reject({statusCode: response.statusCode});
+         } else {
+            let data = JSON.parse(content);
+            data._time = new Date().getTime();
+            cache[url] = data;
+            resolve(data);
+         }
+      });
+   });
+```
+Our dependencies are resolved and bundled by Webpack, which also performs ES6/JSX transpilation (using `babel`), for delivery to the browser.
 
 
 ### Magic mixin sauce
