@@ -108,7 +108,7 @@ where we cache replies for 3 minutes to avoid refetching.
 
 ### Browser request package
 
-Alternatively, we might use the npm `browser-request` package as follows:
+Alternatively, we might use the `browser-request` `npm` package as follows:
 
 ```javascript 
 var request = require('browser-request');
