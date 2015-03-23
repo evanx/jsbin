@@ -57,7 +57,7 @@ Our `state` properties are then automatically hydrated with the JSON reply from 
 
 Finally, our specified callback is invoked once all promises have concluded, and here we might do some special error handling.
 
-Incidently, our `/feed/` endpoint might be a NodeJS Express service returning JSON data stored in Redis, as is the case for a prototype which renders the following :)
+Incidently, our `/feed/` endpoint might be a NodeJS Express service returning JSON data stored in Redis, as is the case for a prototype which renders the following:
 
 <hr>
 <img src="http://evanx.github.io/images/demo/news1.png"/>
@@ -139,16 +139,13 @@ export function requestPromise(url) {
       });
    });
 ```
-where our dependencies are resolved and bundled by <a href="https://github.com/webpack/react-starter">Webpack</a>, which also performs ES6/JSX transpilation (using <a href="http://babeljs.io/blog/2015/02/23/babel-loves-react">babel</a>), for delivery to the browser.
+where our dependencies are resolved and bundled by <a href="https://github.com/webpack/react-starter">Webpack</a>, which also performs ES6/JSX transpilation (using <a href="http://babeljs.io/blog/2015/02/23/babel-loves-react">babel</a>) and minification, for delivery to the browser.
 
 
 ### Magic mixin sauce
 
 Finally, the "magic sauce" is our mixin utility which hydrates our component state as follows:
 ```javascript
-var debug = function() {   
-};
-
 function CountDownLatch(counter, then) {
    this.signal = error => {
       if (counter > 0) {
@@ -314,7 +311,7 @@ which illustrates what `hydratePromises` does, but for a collection of promises.
 <hr>
 <img src="http://evanx.github.io/images/demo/frontpage1.png"/>
 <hr>
-where incidently we are using Webpack to transpile, "browserify," bundle and deliver our ES6/JSX (and CSS/Sass) resources to the browser, and `webpack-dev-server` to enjoy auto reloading thereof :)
+where as mentioned before, we are using Webpack to transpile and deliver our ES6/JSX (and CSS/Sass) resources to the browser, and `webpack-dev-server` to enjoy auto reloading thereof.
 
 <hr>
 Thanks for reading!
