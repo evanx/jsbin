@@ -55,6 +55,8 @@ Our `state` properties are then automatically hydrated with the JSON reply from 
 
 Finally, our specified callback is invoked once all promises have concluded, and here we might do some special error handling.
 
+### Node and Redis
+
 Incidently, our `/feed/` endpoint might be a NodeJS Express service returning JSON data stored in Redis, as is the case for a prototype which renders the following:
 
 <hr>
