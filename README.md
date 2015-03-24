@@ -8,9 +8,24 @@ It's more of a wiki/weblog, with each entry pushed to a github directory.
 
 # March 2015
 
-## React hydrate recipe
 
-See https://github.com/evanx/jsbin/blob/master/hydratePromises/readme.md
+### Announcing Chronica regensis
+
+Chronica is envisaged as a simple secure monitoring solution built using Node.js microservices, Redis, and having a ReactJS admin console.
+
+https://github.com/evanx/chronica
+
+
+### Announcing Certserver 
+
+This is a Node.js microservice to enroll, revoke and verify certs, stored in Redis.
+
+https://github.com/evanx/certserver
+
+
+### React hydrate recipe
+
+https://github.com/evanx/jsbin/blob/master/hydratePromises/readme.md
 
 We introduce a mixin and invoke its `hydrateFromPromises` utility function as follows:
 
@@ -36,9 +51,9 @@ var FrontPage = React.createClass({
 ```
 
 
-## Async map recipe
+### Async map recipe
 
-See: https://github.com/evanx/jsbin/blob/master/asyncMap/readme.md
+https://github.com/evanx/jsbin/blob/master/asyncMap/readme.md
 
 For example, consider we have an `array` of URLs to fetch:
 
