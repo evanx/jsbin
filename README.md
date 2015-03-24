@@ -1,7 +1,7 @@
 
 # Just Snippets ;)
 
-This is not a useable project, just some technical articles and snippets on my JavaScript adventures.
+This is not a useable project, just some notes, articles and code snippets related to my JavaScript adventures.
 
 It's more of a wiki/weblog, with each entry pushed to a github directory.
 
