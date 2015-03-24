@@ -138,6 +138,7 @@ export function requestPromise(url) {
          }
       });
    });
+}
 ```
 where our dependencies are resolved and bundled by <a href="https://github.com/webpack/react-starter">Webpack</a>, which also performs ES6/JSX transpilation (using <a href="http://babeljs.io/blog/2015/02/23/babel-loves-react">babel</a>) and minification, for delivery to the browser.
 
