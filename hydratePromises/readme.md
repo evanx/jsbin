@@ -63,7 +63,7 @@ Incidently, our `/feed/` endpoint might be a NodeJS Express service returning JS
 <img src="http://evanx.github.io/images/demo/news1.png"/>
 <hr>
 
-where we use a Redis <i>list</i> to track article IDs (e.g. polled from an RSS feed), a <i>set</i> to track existing article IDs in the list (so we know if they are new), a <i>sorted set</i> to track article IDs chronologically i.e. by their <tt>published</tt> timestamp, and finally a <i>hashset</i> to record the data for each article (e.g. title, description, image et al).
+where we use a Redis <i>list</i> to track article IDs (e.g. polled from an RSS feed), a <i>set</i> to track existing article IDs in the list (so we know if they are new), a <i>sorted set</i> to track article IDs chronologically i.e. by their <tt>published</tt> timestamp, and finally a <i>hashset</i> to record the data for each article (e.g. title, description, featured image et al).
 
 ### Ordinary XMLHttpRequest
 
