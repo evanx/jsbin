@@ -294,13 +294,13 @@ Incidently, we can invoke `this.hydrateFromPromises(promises)` again to retry al
 
 Finally bear in mind we can use our promises ordinarily as follows ;)
 ```javascript
-            promises.popularArticles().then(data => {
-               log.info('retry ok', data.length);
-               this.state.popularArticles = data;
-               this.setState(this.state);
-            }, error => {
-               log.warn('retry failed', error);
-            });
+         promises.popularArticles().then(data => {
+            log.info('retry ok', data.length);
+            this.state.popularArticles = data;
+            this.setState(this.state);
+         }, error => {
+            log.warn('retry failed', error);
+         });
 ```
 
 which illustrates what `hydratePromises` does, but for a collection of promises.
