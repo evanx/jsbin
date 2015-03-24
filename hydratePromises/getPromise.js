@@ -1,4 +1,6 @@
 
+var Promise = require('es6-promise').Promise;
+
 export function getPromise(url) {
    if (cache[url]) {
       let data = cache[url];
@@ -24,6 +26,5 @@ export function getPromise(url) {
       };
       req.open('GET', url);
       req.send();
-      log.debug('loadJSON', url);
    });
 }

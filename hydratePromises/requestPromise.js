@@ -1,4 +1,5 @@
 
+var Promise = require('es6-promise').Promise;
 var request = require('browser-request');
 
 export function requestPromise(url) {
