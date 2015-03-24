@@ -300,6 +300,7 @@ Finally bear in mind we can use our promises ordinarily as follows ;)
             this.setState(this.state);
          }, error => {
             log.warn('retry failed', error);
+            // TODO retry
          });
 ```
 
