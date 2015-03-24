@@ -9,7 +9,7 @@ It's more of a wiki/weblog, with each entry pushed to a github directory.
 # March 2015
 
 
-### Announcing Chronica regensis
+### Announcing Chronica regenesis
 
 Chronica is envisaged as a simple secure monitoring solution built using Node.js microservices, Redis, and having a ReactJS admin console.
 
@@ -21,6 +21,15 @@ https://github.com/evanx/chronica
 This is a Node.js microservice to enroll, revoke and verify certs, stored in Redis.
 
 https://github.com/evanx/certserver
+
+
+### Reading: What is InfluxDB?
+
+* InfluxDB is a scalable time-series database
+* uses an underlying key-value store such as RocksDB or LevelDB
+* HTTP API, and also SQL-like query language
+
+http://influxdb.com/docs/v0.8/introduction/overview.html
 
 
 ### React hydrate recipe
