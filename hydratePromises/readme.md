@@ -308,7 +308,6 @@ which illustrates what `hydratePromises` does, but for a collection of promises.
 
 ### Demo
 
-<hr>
 We use `webpack-dev-server` for auto reloading when JSX or SCSS resources are modified.
 
 <hr>
