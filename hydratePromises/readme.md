@@ -193,7 +193,7 @@ where we invoke our promise producers, and only invoke `setState` when all the p
 
 We use a `CountDownLatch` utility to count down the replies we are awaiting and then invoke `setState` on our component. That triggers a `render` of our hydrated component. 
 
-Finally, we invoke an optional callback, with the last error, or <tt>null</tt> if no error occurred.
+Finally, we invoke an optional callback, with the last error, or <tt>undefined</tt> if no error occurred.
 
 
 ### Error handling 
