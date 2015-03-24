@@ -309,9 +309,10 @@ which illustrates what `hydratePromises` does, but for a collection of promises.
 ### Demo
 
 <hr>
-<img src="http://evanx.github.io/images/demo/frontpage1.png"/>
+We use `webpack-dev-server` for auto reloading when JSX or SCSS resources are modified.
+
 <hr>
-where we are using `webpack-dev-server` for auto reloading when JSX or SCSS resources are modified.
+<img src="http://evanx.github.io/images/demo/frontpage1.png"/>
 
 <hr>
 Thanks for reading!
