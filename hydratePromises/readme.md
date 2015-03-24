@@ -1,7 +1,5 @@
 
-
 <i>This repo is not a project - it's more of a wiki/weblog, with each entry pushed to a github directory :)</i>
-
 
 ### Tech Note: Hydrating ReactJS component state from promises 
 
@@ -99,7 +97,7 @@ export function getPromise(url) {
       };
       req.open('GET', url);
       req.send();
-      log.debug('loadJSON', url);
+      log.debug('getPromise', url);
    });
 }
 ```
@@ -280,8 +278,8 @@ Incidently, we can invoke `this.hydrateFromPromises(promises)` again to retry al
       let retryCount = 0;
       let retry = () => {
          log.debug('retry');
-         this.hydrateFromPromises(promises, err => {
-            if (err) {
+         this.hydrateFromPromises(promises, error => {
+            if (error) {
                retryCount += 1;
                if (retryCount < 5) {
                   setTimeout(() => {

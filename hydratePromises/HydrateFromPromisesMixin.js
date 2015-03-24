@@ -19,10 +19,10 @@ function CountDownLatch(counter, then) {
 var hydrateFromPromisesMixin = {
    hydrateFromPromises: function(promises, callback) {
       debug('hydrate', Object.keys(promises));
-      let countDownLatch = new CountDownLatch(Object.keys(promises).length, err => {
+      let countDownLatch = new CountDownLatch(Object.keys(promises).length, error => {
          this.setState(this.state);
          if (callback) {
-           callback(err); 
+           callback(error); 
          }
       });
       Object.keys(promises).forEach(key => {
