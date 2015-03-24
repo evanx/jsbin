@@ -311,7 +311,7 @@ which illustrates what `hydratePromises` does, but for a collection of promises.
 <hr>
 <img src="http://evanx.github.io/images/demo/frontpage1.png"/>
 <hr>
-where as mentioned before, we are using Webpack to transpile and deliver our ES6/JSX (and CSS/Sass) resources to the browser, and `webpack-dev-server` to enjoy auto reloading thereof.
+where we are using `webpack-dev-server` for auto reloading when JSX or SCSS resources are edited.
 
 <hr>
 Thanks for reading!
