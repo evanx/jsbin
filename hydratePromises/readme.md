@@ -311,7 +311,7 @@ which illustrates what `hydrateFromPromises` does, but for a collection of promi
 
 ### Demo
 
-We use `webpack-dev-server` for auto reloading when JSX or SCSS resources are modified.
+We use `webpack-dev-server` for auto reloading when JSX or SCSS resources are modified:
 
 <hr>
 <img src="http://evanx.github.io/images/demo/frontpage1.png"/>
