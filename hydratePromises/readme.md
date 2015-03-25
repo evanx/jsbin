@@ -306,7 +306,7 @@ Finally bear in mind we can use our promises ordinarily as follows ;)
          });
 ```
 
-which illustrates what `hydratePromises` does, but for a collection of promises.
+which illustrates what `hydrateFromPromises` does, but for a collection of promises.
 
 
 ### Demo
