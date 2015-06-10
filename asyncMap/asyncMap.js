@@ -19,12 +19,11 @@ function fetchURLs(urls, callback) {
    }, callback);
 }
 
-function testFetchURLs(callback) {
+function testFetchURLs() {
    var urls = ['http://google.co.za', 'http://bing.com'];
    fetchURLs(urls, function (err, results) {
       if (err) {
          console.error('failed to fetch urls:', err);
-         callback(err); // test failed
       } else {
          var titles = lodash.map(results, function (content) {
             return content.match(/<title>(.*)<\/title>/)[1];
@@ -32,7 +31,6 @@ function testFetchURLs(callback) {
          console.info('titles', titles);
          assert.equal(titles[0], 'Google');
          assert.equal(titles[1], 'Bing');
-         callback(null); // no error, test ok
       }
    });
 }

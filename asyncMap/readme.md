@@ -108,11 +108,11 @@ where `callback` is the final callback to be invoked by `async.map` once all the
 We can test the above function as follows:
 
 ```javascript
-function testFetchURLs(callback) {
+function testFetchURLs() {
    var urls = ['http://google.co.za', 'http://bing.com'];
    fetchURLs(urls, function(err, results) {
       if (err) {
-         callback(err); // test failed
+         console.error('failed to fetch urls:', err);
       } else {
          var titles = lodash.map(results, function(content) {
             return content.match(/<title>(.*)<\/title>/)[1];
@@ -120,7 +120,6 @@ function testFetchURLs(callback) {
          console.info('titles', titles); // titles [ 'Google', 'Bing' ]
          assert.equal(titles[0], 'Google');
          assert.equal(titles[1], 'Bing');
-         callback(null); // no error, test ok
       }
    });
 }
@@ -135,7 +134,7 @@ See: https://github.com/evanx/jsbin/blob/master/asyncMap/asyncMap.js
 git clone https://github.com/evanx/jsbin.git
 cd jsbin
 npm install
-nodejs asyncMap.js
+nodejs asyncMap/asyncMap.js
 ```
 
 The output is:
