@@ -103,7 +103,7 @@ function fetchURLs(urls, callback) {
    }, callback);
 }
 ```
-where `callback` is the final callback to be invoked by `async.map` once all the parallel tasks have completed, and as such takes an array of results.
+where `callback` is the final callback to be invoked by `async.map` once all the parallel tasks have completed, with an array of results.
 
 We can test the above function as follows:
 
