@@ -126,7 +126,7 @@ function testFetchURLs(callback) {
 }
 ```
 
-See: https://github.com/evanx/jsbin/blob/master/asyncMap.js
+See: https://github.com/evanx/jsbin/blob/master/asyncMap/asyncMap.js
 
 
 ### Test
