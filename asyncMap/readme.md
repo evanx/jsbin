@@ -108,11 +108,11 @@ where `callback` is the final callback to be invoked by `async.map` once all the
 We can test the above function as follows:
 
 ```javascript
-function testFetchURLs() {
+function testFetchURLs(callback) {
    var urls = ['http://google.co.za', 'http://bing.com'];
    fetchURLs(urls, function(err, results) {
       if (err) {
-         throw new Error(err);
+         callback(err); // test failed
       } else {
          var titles = lodash.map(results, function(content) {
             return content.match(/<title>(.*)<\/title>/)[1];
@@ -120,6 +120,7 @@ function testFetchURLs() {
          console.info('titles', titles); // titles [ 'Google', 'Bing' ]
          assert.equal(titles[0], 'Google');
          assert.equal(titles[1], 'Bing');
+         callback(null); // no error, test ok
       }
    });
 }
