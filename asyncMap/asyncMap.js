@@ -5,18 +5,18 @@ var lodash = require('lodash');
 var request = require('request');
 var assert = require('assert');
 
-function fetchURLs(urls, then) {
-   async.map(urls, function (url, callback) {
+function fetchURLs(urls, callback) {
+   async.map(urls, function (url, cb) {
       request(url, function (err, response, content) {
          if (err) {
-            callback(err);
+            cb(err);
          } else if (response.statusCode !== 200) {
-            callback({message: 'HTTP code: ' + response.statusCode});
+            cb({message: 'HTTP code: ' + response.statusCode});
          } else {
-            callback(null, content);
+            cb(null, content);
          }
       });
-   }, then);
+   }, callback);
 }
 
 function testFetchURLs() {
@@ -36,4 +36,3 @@ function testFetchURLs() {
 }
 
 testFetchURLs(); // output: titles [ 'Google', 'Bing' ]
-

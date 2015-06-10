@@ -5,7 +5,7 @@
 When you have an `array` of items which you want to "map" to tasks, to run in parallel, and finally process the results when all tasks are complete:
 
 ```javascript
-   async.parallel(lodash(array).map(function(item) { 
+   async.parallel(lodash(array).map(function(item) {
       return function(callback) { // create an async task for item
          ... // some processing on item
          someAsync(..., function(err, result) { // some async call for item
@@ -26,12 +26,12 @@ When you have an `array` of items which you want to "map" to tasks, to run in pa
    );
 ```
 
-where `lodash` chaining is used, hence the final `value()`. This enables other methods to be added easily e.g. `filter` <i>et al</i> as follows: 
+where `lodash` chaining is used, hence the final `value()`. This enables other methods to be added easily e.g. `filter` <i>et al</i> as follows:
 
 ```javascript
 async.parallel(lodash(array).filter(function(item) {
       return true; // or false to exclude
-   }).slice(1).take(2).map(function(item) { 
+   }).slice(1).take(2).map(function(item) {
       ...
 ```
 
@@ -57,19 +57,19 @@ Otherwise, using `async.map` is more concise:
    });
 ```
 
-### Example 
+### Example
 
 For example, consider we have an `array` of URLs to fetch:
 
 ```javascript
-async.map(urls, function(url, callback) { 
+async.map(urls, function(url, cb) {
    request(url, function(err, response, content) {
       if (err) {
-         callback(err);
+         cb(err);
       } else if (response.statusCode !== 200) {
-         callback({message: 'HTTP code: ' + response.statusCode});
+         cb({message: 'HTTP code: ' + response.statusCode});
       } else {
-         callback(null, content);
+         cb(null, content);
       }
    });
  }, function(err, results) {
@@ -89,18 +89,18 @@ var lodash = require('lodash');
 var request = require('request');
 var assert = require('assert');
 
-function fetchURLs(urls, then) {
-   async.map(urls, function (url, callback) {
+function fetchURLs(urls, callback) {
+   async.map(urls, function (url, cb) {
       request(url, function (err, response, content) {
          if (err) {
-            callback(err);
+            cb(err);
          } else if (response.statusCode !== 200) {
-            callback({message: 'HTTP code: ' + response.statusCode});
+            cb({message: 'HTTP code: ' + response.statusCode});
          } else {
-            callback(null, content);
+            cb(null, content);
          }
       });
-   }, then);
+   }, callback);
 }
 ```
 
@@ -114,7 +114,7 @@ function testFetchURLs() {
          throw new Error(err);
       } else {
          var titles = lodash.map(results, function(content) {
-            return content.match(/<title>(.*)<\/title>/)[1];   
+            return content.match(/<title>(.*)<\/title>/)[1];
          });
          console.info('titles', titles); // titles [ 'Google', 'Bing' ]
          assert.equal(titles[0], 'Google');
@@ -127,7 +127,7 @@ function testFetchURLs() {
 See: https://github.com/evanx/jsbin/blob/master/asyncMap.js
 
 
-### Test 
+### Test
 
 ```shell
 git clone https://github.com/evanx/jsbin.git
@@ -142,9 +142,8 @@ The output is:
 titles [ 'Google', 'Bing' ]
 ```
 
-### Further reading 
+### Further reading
 
 Wiki home: https://github.com/evanx/vellum/wiki
 
 https://twitter.com/evanxsummers
-
