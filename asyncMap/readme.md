@@ -80,7 +80,7 @@ async.map(urls, function(url, cb) {
    }
 });
 ```
-where `async.map` invokes each task with a value from the array and secondly a callback to invoke when it has been completed.
+where `async.map` invokes each task with a value from the array and a callback to invoke when it has been completed. We specify a "final" callback for `async.map` into invoke with an array of the results, once all the tasks have been completed.
 
 This might be wrapped in a function as follows:
 
