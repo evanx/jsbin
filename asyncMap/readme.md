@@ -2,7 +2,7 @@
 
 ## async map recipe
 
-When you have an `array` of items which you want to "map" to tasks, to run in parallel, and finally process the results when all tasks are complete:
+Say we have an `array` of items which we want to "map" to tasks, to run in parallel, and finally process the results when all tasks are complete:
 
 ```javascript
    async.parallel(lodash(array).map(function(item) {
@@ -63,7 +63,7 @@ For example, consider we have an `array` of URLs to fetch:
 
 ```javascript
 async.map(urls, function(url, cb) {
-   request(url, function(err, response, content) {
+   request(url, function(err, response, content) { // task
       if (err) {
          cb(err);
       } else if (response.statusCode !== 200) {
@@ -72,7 +72,7 @@ async.map(urls, function(url, cb) {
          cb(null, content);
       }
    });
-}, function(err, results) {
+}, function(err, results) { // final callback
    if (err) {
       console.error('error fetching URLs', err);
    } else {
@@ -80,6 +80,7 @@ async.map(urls, function(url, cb) {
    }
 });
 ```
+where `async.map` invokes each task with a value from the array and secondly a callback to invoke when it has been completed.
 
 This might be wrapped in a function as follows:
 
